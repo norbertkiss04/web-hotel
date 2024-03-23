@@ -1,0 +1,151 @@
+*{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+ol, ul {
+	list-style: none;
+}
+
+body {
+	font-family: 'Arial', sans-serif;
+}
+
+.nav-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 80%;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(110, 112, 112);
+    padding: 40px 0px;
+    margin: 0px 20px;
+}
+
+.logo {
+    top: 0;
+    left: 0 ;
+    z-index: 10;
+    position: absolute;
+	font-size: 24px;
+    background-color: #000;
+    padding: 40px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+	color: white;
+    margin-left: 40px;
+}
+
+.logo .x{
+    font-weight: 600;
+}
+
+nav ul {
+	display: flex;
+	gap: 20px;
+}
+
+nav a {
+	text-decoration: none;
+	color: white;
+	font-size: 20px;
+    font-weight: 600;
+}
+
+.book-now a {
+	color: white;
+	background-color: #000;
+	padding: 16px 32px;
+    font-size: 18px;
+    font-weight: 600;
+	text-decoration: none;
+}
+
+.hero {
+	background-image: url('../img/hero.jpg'); /* Update this path */
+	background-size: cover;
+	background-position: center;
+	position: relative;
+}
+
+.hero::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0, 0, 0, 0.62); /* Dark overlay color */
+}
+
+.hero-content {
+	position: relative;
+	z-index: 2;
+	padding: 80px;
+    padding-top:100px;
+	color: white;
+    display: flex;
+    justify-content: justify;
+    align-items: center;
+    min-height: 500px;
+}
+
+.col1{
+    margin-top: auto;
+    width: 100%;
+}   
+
+.col2{
+    width: 100%;
+}
+
+.tagline {
+	display: block;
+	margin-bottom: 20px;
+	font-size: 20px;
+    font-weight: 600;
+}
+
+h1 {
+    line-height: 1.1em;
+	font-size: 80px;
+    font-weight: 700;
+	margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+}
+
+.btn-view-rooms {
+	background-color: transparent;
+	color: white;
+	padding: 18px 32px;
+	text-decoration: none;
+	display: inline-block;
+    border: 2px solid white;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	.nav-bar {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+	
+	.hero-content {
+		padding: 50px;
+	}
+}
