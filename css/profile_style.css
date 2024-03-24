@@ -1,9 +1,12 @@
 section {
     margin: 64px 0px;
-	margin-top: 160px;
     padding: 24px 64px;
     width: 100%;
     box-sizing: border-box;
+}
+
+.up{
+	margin-top: 160px;
 }
 
 .nav-bar a{

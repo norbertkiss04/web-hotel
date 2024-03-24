@@ -66,12 +66,20 @@ nav a {
   font-weight: 600;
 }
 
+nav a:hover{
+  color: #acacac;
+}
+
 .my-account-text {
   text-decoration: none;
   color: #fff;
   font-size: 20px;
   font-weight: 600;
   margin-right: 24px;
+}
+
+.my-account-text:hover{
+  color: #acacac;
 }
 
 .book-now-text {
@@ -82,6 +90,11 @@ nav a {
   font-weight: 600;
   text-decoration: none;
 }
+
+.book-now-text:hover{
+  color: #acacac;
+}
+
 footer {
   background-color: #12171b;
   color: white;

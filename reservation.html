@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/reservation_style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="logo">
+      <p class="x">MDN</p>
+      <p>Hotel</p>
+    </div>
+    <div class="nav-bar">
+      <nav>
+        <ul>
+          <li><a href="./index.html">Home</a></li>
+          <li><a href="./room.html">Our Rooms</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="book-now">
+        <a class="my-account-text" href="./profile.html">MyAccount</a>
+        <a class="book-now-text" href="#book">BOOK NOW</a>
+      </div>
+    </div>
+    <header class="up">
+      <div>
+        <h1>Rooms</h1>
+        <div class="filter">
+          <span class="filter-label">Filters:</span>
+          <label class="custom-checkbox"
+            ><i class="fas fa-wifi icon"></i>WiFi<input
+              type="checkbox"
+              name="wifi" /><span class="checkmark"></span
+          ></label>
+          <label class="custom-checkbox"
+            ><i class="fas fa-door-open icon"></i>Balcony<input
+              type="checkbox"
+              name="balcony" /><span class="checkmark"></span
+          ></label>
+          <label class="custom-checkbox"
+            ><i class="fas fa-snowflake icon"></i>Air Conditioning<input
+              type="checkbox"
+              name="ac" /><span class="checkmark"></span
+          ></label>
+          <label
+            ><i class="fas fa-users icon"></i
+            ><select name="people">
+              <option value="1">1 Person</option>
+              <option value="2">2 People</option>
+              <option value="3">3 People</option>
+              <option value="4">4+ People</option>
+            </select></label
+          >
+          <label
+            >Max Price<i class="fas fa-dollar-sign icon"></i
+            ><input type="number" class="input-field" name="price" min="0"
+          /></label>
+        </div>
+      </div>
+    </header>
+    <section class="room-section">
+      <div class="rooms">
+        <div class="room-card">
+          <img src="./img/hotel-room.jpg" alt="Room 101" class="room-image" />
+          <div class="room-info">
+            <h2 class="room-title">Room 101</h2>
+            <div class="room-amenities">
+              <span><i class="fas fa-wifi"></i> WiFi</span>
+              <span><i class="fas fa-door-open"></i> Balcony</span>
+              <span><i class="fas fa-snowflake"></i> Air Conditioning</span>
+            </div>
+            <div class="room-capacity">
+              <span>Accommodates: 2 Persons</span>
+            </div>
+            <div class="room-price">
+              <span>$120/Night</span>
+            </div>
+          </div>
+        </div>
+        <div class="room-card">
+          <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
+          <div class="room-info">
+            <h2 class="room-title">Room 102</h2>
+            <div class="room-amenities">
+              <span><i class="fas fa-wifi"></i> WiFi</span>
+              <span><i class="fas fa-sun"></i> Balcony with Ocean View</span>
+              <span
+                ><i class="fas fa-temperature-low"></i> Air Conditioning</span
+              >
+            </div>
+            <div class="room-capacity">
+              <span>Accommodates: 3 Persons</span>
+            </div>
+            <div class="room-price">
+              <span>$150/Night</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="room-card">
+          <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
+          <div class="room-info">
+            <h2 class="room-title">Room 103</h2>
+            <div class="room-amenities">
+              <span><i class="fas fa-wifi"></i> WiFi</span>
+              <span><i class="fas fa-sun"></i> Balcony with Ocean View</span>
+              <span
+                ><i class="fas fa-temperature-low"></i> Air Conditioning</span
+              >
+            </div>
+            <div class="room-capacity">
+              <span>Accommodates: 3 Persons</span>
+            </div>
+            <div class="room-price">
+              <span>$150/Night</span>
+            </div>
+          </div>
+        </div>
+        <div class="room-card">
+          <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
+          <div class="room-info">
+            <h2 class="room-title">Room 104</h2>
+            <div class="room-amenities">
+              <span><i class="fas fa-wifi"></i> WiFi</span>
+              <span><i class="fas fa-sun"></i> Balcony with Ocean View</span>
+              <span
+                ><i class="fas fa-temperature-low"></i> Air Conditioning</span
+              >
+            </div>
+            <div class="room-capacity">
+              <span>Accommodates: 3 Persons</span>
+            </div>
+            <div class="room-price">
+              <span>$150/Night</span>
+            </div>
+          </div>
+        </div>
+        <div class="room-card">
+          <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
+          <div class="room-info">
+            <h2 class="room-title">Room 105</h2>
+            <div class="room-amenities">
+              <span><i class="fas fa-wifi"></i> WiFi</span>
+              <span><i class="fas fa-sun"></i> Balcony with Ocean View</span>
+              <span
+                ><i class="fas fa-temperature-low"></i> Air Conditioning</span
+              >
+            </div>
+            <div class="room-capacity">
+              <span>Accommodates: 3 Persons</span>
+            </div>
+            <div class="room-price">
+              <span>$150/Night</span>
+            </div>
+          </div>
+        </div>
+        <div class="room-card">
+          <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
+          <div class="room-info">
+            <h2 class="room-title">Room 106</h2>
+            <div class="room-amenities">
+              <span><i class="fas fa-wifi"></i> WiFi</span>
+              <span><i class="fas fa-sun"></i> Balcony with Ocean View</span>
+              <span
+                ><i class="fas fa-temperature-low"></i> Air Conditioning</span
+              >
+            </div>
+            <div class="room-capacity">
+              <span>Accommodates: 3 Persons</span>
+            </div>
+            <div class="room-price">
+              <span>$150/Night</span>
+            </div>
+          </div>
+        </div>
+        <div class="room-card">
+          <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
+          <div class="room-info">
+            <h2 class="room-title">Room 107</h2>
+            <div class="room-amenities">
+              <span><i class="fas fa-wifi"></i> WiFi</span>
+              <span><i class="fas fa-sun"></i> Balcony with Ocean View</span>
+              <span
+                ><i class="fas fa-temperature-low"></i> Air Conditioning</span
+              >
+            </div>
+            <div class="room-capacity">
+              <span>Accommodates: 3 Persons</span>
+            </div>
+            <div class="room-price">
+              <span>$150/Night</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-left">
+        <div class="contact-info">
+          <p>123 Main Street, Hometown, Country 12345</p>
+          <p>+1 (123) 456-7890 | info@mdnhotel.com</p>
+        </div>
+      </div>
+      <div class="footer-right">
+        <div class="social-media">
+          <a href="http://facebook.com/mdnhotel"
+            ><i class="fab fa-facebook-f"></i
+          ></a>
+          <a href="http://twitter.com/mdnhotel"
+            ><i class="fab fa-twitter"></i
+          ></a>
+          <a href="http://instagram.com/mdnhotel"
+            ><i class="fab fa-instagram"></i
+          ></a>
+        </div>
+        <div class="awards">
+          <p>Awarded Best City Hotel 2024</p>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

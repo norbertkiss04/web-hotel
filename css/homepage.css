@@ -131,3 +131,8 @@ h1 {
     display: inline-block;
     border: 2px solid white;
 }
+
+.btn-view-rooms:hover{
+    color: #acacac;
+    border-color: #acacac;
+}
