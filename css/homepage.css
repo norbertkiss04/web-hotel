@@ -230,3 +230,11 @@ h1 {
         width: auto;
       }
 }
+
+nav a {
+    color: #000;
+}
+
+.my-account-text {
+    color: #000;
+}

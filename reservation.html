@@ -14,193 +14,217 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <script src="./js/global.js"></script>
+    <script>
+      function navigate(url) {
+        window.location.href = url;
+      }
+    </script>
   </head>
   <body>
-    <div class="logo">
-      <p class="x">MDN</p>
-      <p>Hotel</p>
-    </div>
-    <div class="nav-bar">
-      <nav>
-        <ul>
-          <li><a href="./index.html">Home</a></li>
-          <li><a href="./room.html">Our Rooms</a></li>
-          <li><a href="#experience">Experience</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-      <div class="book-now">
-        <a class="my-account-text" href="./profile.html">MyAccount</a>
-        <a class="book-now-text" href="#book">BOOK NOW</a>
+    <div class="nav-container">
+      <div class="logo">
+        <p class="x">MDN</p>
+        <p>Hotel</p>
+      </div>
+      <div class="nav-bar">
+        <nav class="nav">
+          <ul>
+            <li><a href="./index.html">Főoldal</a></li>
+            <li><a href="./reservation.html">Szobáink</a></li>
+            <li><a href="./gallery.html">Galéria</a></li>
+          </ul>
+        </nav>
+        <div class="book-now">
+          <a class="my-account-text" href="./profile.html">Profilom</a>
+          <a class="book-now-text" href="./reservation.html">FOGLALÁS</a>
+        </div>
+        <div class="hamburger-menu-icon" onclick="showHamburgerMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+          <div class="hamburger-menu" id="hamburger-menu">
+            <div class="hamburger-menu-close-icon" onclick="hideHamburgerMenu()">
+              <i class="fa-solid fa-times"></i>
+            </div>
+            <nav class="nav-mobile">
+              <ul>
+                <li><a href="./index.html">Főoldal</a></li>
+                <li><a href="./reservation.html">Szobáink</a></li>
+                <li><a href="./gallery.html">Galéria</a></li>
+                <li><a href="./profile.html">Profilom</a></li>
+                <li><a href="./reservation.html">Foglalás</a></li>
+              </ul>
+            </nav>
+          </div>
       </div>
     </div>
     <header class="up">
       <div>
-        <h1>Rooms</h1>
+        <h1>Szobáink</h1>
         <div class="filter">
-          <span class="filter-label">Filters:</span>
+          <span class="filter-label">Filterek:</span>
           <label class="custom-checkbox"
             ><i class="fas fa-wifi icon"></i>WiFi<input
               type="checkbox"
               name="wifi" /><span class="checkmark"></span
           ></label>
           <label class="custom-checkbox"
-            ><i class="fas fa-door-open icon"></i>Balcony<input
+            ><i class="fas fa-door-open icon"></i>Terasz<input
               type="checkbox"
               name="balcony" /><span class="checkmark"></span
           ></label>
           <label class="custom-checkbox"
-            ><i class="fas fa-snowflake icon"></i>Air Conditioning<input
+            ><i class="fas fa-snowflake icon"></i>Légkondícionáló<input
               type="checkbox"
               name="ac" /><span class="checkmark"></span
           ></label>
           <label
             ><i class="fas fa-users icon"></i
             ><select name="people">
-              <option value="1">1 Person</option>
-              <option value="2">2 People</option>
-              <option value="3">3 People</option>
-              <option value="4">4+ People</option>
+              <option value="1">1 Személy</option>
+              <option value="2">2 Személy</option>
+              <option value="3">3 Személy</option>
+              <option value="4">4+ Személy</option>
             </select></label
           >
           <label
-            >Max Price<i class="fas fa-dollar-sign icon"></i
-            ><input type="number" class="input-field" name="price" min="0"
+            ><i class="fas fa-dollar-sign icon"></i
+              >Maximlis ár<input type="number" class="input-field" name="price" min="0"
           /></label>
         </div>
       </div>
     </header>
     <section class="room-section">
       <div class="rooms">
-        <div class="room-card">
+        <div class="room-card" onclick="navigate('./room.html')">
           <img src="./img/hotel-room.jpg" alt="Room 101" class="room-image" />
           <div class="room-info">
             <h2 class="room-title">Room 101</h2>
             <div class="room-amenities">
               <span><i class="fas fa-wifi"></i> WiFi</span>
-              <span><i class="fas fa-door-open"></i> Balcony</span>
-              <span><i class="fas fa-snowflake"></i> Air Conditioning</span>
+              <span><i class="fas fa-door-open"></i> Terasz</span>
+              <span><i class="fas fa-snowflake"></i> Légkondícionáló</span>
             </div>
             <div class="room-capacity">
-              <span>Accommodates: 2 Persons</span>
+              <span>Férőhely: 2 Persons</span>
             </div>
             <div class="room-price">
-              <span>$120/Night</span>
+              <span>42.000 HUF/Éjszaka</span>
             </div>
           </div>
         </div>
-        <div class="room-card">
+        <div class="room-card" onclick="navigate('./room.html')">
           <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
           <div class="room-info">
             <h2 class="room-title">Room 102</h2>
             <div class="room-amenities">
               <span><i class="fas fa-wifi"></i> WiFi</span>
-              <span><i class="fas fa-sun"></i> Balcony with Ocean View</span>
+              <span><i class="fas fa-sun"></i> Terasz with Ocean View</span>
               <span
-                ><i class="fas fa-temperature-low"></i> Air Conditioning</span
+                ><i class="fas fa-temperature-low"></i> Légkondícionáló</span
               >
             </div>
             <div class="room-capacity">
-              <span>Accommodates: 3 Persons</span>
+              <span>Férőhely: 3 Persons</span>
             </div>
             <div class="room-price">
-              <span>$150/Night</span>
+              <span>65.000 HUF/Éjszaka</span>
             </div>
           </div>
         </div>
 
-        <div class="room-card">
+        <div class="room-card" onclick="navigate('./room.html')">
           <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
           <div class="room-info">
             <h2 class="room-title">Room 103</h2>
             <div class="room-amenities">
               <span><i class="fas fa-wifi"></i> WiFi</span>
-              <span><i class="fas fa-sun"></i> Balcony with Ocean View</span>
+              <span><i class="fas fa-sun"></i> Terasz with Ocean View</span>
               <span
-                ><i class="fas fa-temperature-low"></i> Air Conditioning</span
+                ><i class="fas fa-temperature-low"></i> Légkondícionáló</span
               >
             </div>
             <div class="room-capacity">
-              <span>Accommodates: 3 Persons</span>
+              <span>Férőhely: 3 Persons</span>
             </div>
             <div class="room-price">
-              <span>$150/Night</span>
+              <span>65.000 HUF/Éjszaka</span>
             </div>
           </div>
         </div>
-        <div class="room-card">
+        <div class="room-card" onclick="navigate('./room.html')">
           <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
           <div class="room-info">
             <h2 class="room-title">Room 104</h2>
             <div class="room-amenities">
               <span><i class="fas fa-wifi"></i> WiFi</span>
-              <span><i class="fas fa-sun"></i> Balcony with Ocean View</span>
+              <span><i class="fas fa-sun"></i> Terasz with Ocean View</span>
               <span
-                ><i class="fas fa-temperature-low"></i> Air Conditioning</span
+                ><i class="fas fa-temperature-low"></i> Légkondícionáló</span
               >
             </div>
             <div class="room-capacity">
-              <span>Accommodates: 3 Persons</span>
+              <span>Férőhely: 3 Persons</span>
             </div>
             <div class="room-price">
-              <span>$150/Night</span>
+              <span>65.000 HUF/Éjszaka</span>
             </div>
           </div>
         </div>
-        <div class="room-card">
+        <div class="room-card" onclick="navigate('./room.html')">
           <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
           <div class="room-info">
             <h2 class="room-title">Room 105</h2>
             <div class="room-amenities">
               <span><i class="fas fa-wifi"></i> WiFi</span>
-              <span><i class="fas fa-sun"></i> Balcony with Ocean View</span>
+              <span><i class="fas fa-sun"></i> Terasz with Ocean View</span>
               <span
-                ><i class="fas fa-temperature-low"></i> Air Conditioning</span
+                ><i class="fas fa-temperature-low"></i> Légkondícionáló</span
               >
             </div>
             <div class="room-capacity">
-              <span>Accommodates: 3 Persons</span>
+              <span>Férőhely: 3 Persons</span>
             </div>
             <div class="room-price">
-              <span>$150/Night</span>
+              <span>65.000 HUF/Éjszaka</span>
             </div>
           </div>
         </div>
-        <div class="room-card">
+        <div class="room-card" onclick="navigate('./room.html')">
           <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
           <div class="room-info">
             <h2 class="room-title">Room 106</h2>
             <div class="room-amenities">
               <span><i class="fas fa-wifi"></i> WiFi</span>
-              <span><i class="fas fa-sun"></i> Balcony with Ocean View</span>
+              <span><i class="fas fa-sun"></i> Terasz with Ocean View</span>
               <span
-                ><i class="fas fa-temperature-low"></i> Air Conditioning</span
+                ><i class="fas fa-temperature-low"></i> Légkondícionáló</span
               >
             </div>
             <div class="room-capacity">
-              <span>Accommodates: 3 Persons</span>
+              <span>Férőhely: 3 Persons</span>
             </div>
             <div class="room-price">
-              <span>$150/Night</span>
+              <span>65.000 HUF/Éjszaka</span>
             </div>
           </div>
         </div>
-        <div class="room-card">
+        <div class="room-card" onclick="navigate('./room.html')">
           <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
           <div class="room-info">
             <h2 class="room-title">Room 107</h2>
             <div class="room-amenities">
               <span><i class="fas fa-wifi"></i> WiFi</span>
-              <span><i class="fas fa-sun"></i> Balcony with Ocean View</span>
+              <span><i class="fas fa-sun"></i> Terasz with Ocean View</span>
               <span
-                ><i class="fas fa-temperature-low"></i> Air Conditioning</span
+                ><i class="fas fa-temperature-low"></i> Légkondícionáló</span
               >
             </div>
             <div class="room-capacity">
-              <span>Accommodates: 3 Persons</span>
+              <span>Férőhely: 3 Persons</span>
             </div>
             <div class="room-price">
-              <span>$150/Night</span>
+              <span>65.000 HUF/Éjszaka</span>
             </div>
           </div>
         </div>

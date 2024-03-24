@@ -13,28 +13,47 @@
       href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
       rel="stylesheet"
     />
-    <title>Document</title>
+    <script src="./js/global.js"></script>
+    <title>Profilom</title>
   </head>
   <body>
     <header>
-      <div class="logo">
-        <p class="x">MDN</p>
-        <p>Hotel</p>
-      </div>
+      <div class="nav-container">
+        <div class="logo">
+          <p class="x">MDN</p>
+          <p>Hotel</p>
+        </div>
       <div class="nav-bar">
-        <nav>
+        <nav class="nav">
           <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#rooms">Our Rooms</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="./index.html">Főoldal</a></li>
+            <li><a href="./reservation.html">Szobáink</a></li>
+            <li><a href="./gallery.html">Galéria</a></li>
           </ul>
         </nav>
         <div class="book-now">
-          <a class="my-account-text" href="./profile.html">MyAccount</a>
-          <a class="book-now-text" href="#book">BOOK NOW</a>
+          <a class="my-account-text" href="./profile.html">Profilom</a>
+          <a class="book-now-text" href="./reservation.html">BOOK NOW</a>
         </div>
+        <div class="hamburger-menu-icon" onclick="showHamburgerMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </div>
+          <div class="hamburger-menu" id="hamburger-menu">
+            <div class="hamburger-menu-close-icon" onclick="hideHamburgerMenu()">
+              <i class="fa-solid fa-times"></i>
+            </div>
+            <nav class="nav-mobile">
+              <ul>
+                <li><a href="./index.html">Főoldal</a></li>
+                <li><a href="./reservation.html">Szobáink</a></li>
+                <li><a href="./gallery.html">Galéria</a></li>
+                <li><a href="./profile.html">Profilom</a></li>
+                <li><a href="./reservation.html">Foglalás</a></li>
+              </ul>
+            </nav>
+          </div>
       </div>
+    </div>
     </header>
     <section class="up">
       <h1 class="section-title">Személyes adatok</h1>
