@@ -18,9 +18,6 @@ ol, ul {
 }
 
 .nav-bar {
-    /* position: absolute;
-    top: 0;
-    right: 0; */
     margin-left: 18% !important;
     width: 80%;
     z-index: 10;
@@ -30,7 +27,6 @@ ol, ul {
     box-sizing: border-box;
     border-bottom: 1px solid rgb(110, 112, 112);
     padding: 40px 0px;
-    /* margin: 0px 20px; */
 }
 
 .logo {
@@ -185,6 +181,16 @@ section {
 	justify-content: start;
 }
 
+.room-details-section-btn {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	left: 0px;
+	bottom: 16px;
+	box-sizing: border-box;
+}
+
 .room-reserving-btn {
 	background-color: #000;
 	color: white;
@@ -196,9 +202,6 @@ section {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	position: absolute;
-	left: 16px;
-	bottom: 16px;
 	cursor: pointer;
 }
 
@@ -207,8 +210,6 @@ section {
 	justify-content: center;
 	align-items: center;
 }
-
-/* Media querry 1440px */
 
 @media screen and (max-width: 1440px) {
 	.w-48p-l {
@@ -244,10 +245,39 @@ section {
 	
 }
 
-/* 320 */
 
 @media screen and (max-width: 320px) {
 	.w-48p-r {
 		min-height: 550px;
 	}
+}
+
+.room-img-preview {
+	position: absolute;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 9999;
+	display: none;
+}
+
+.room-img-preview-close {
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 16px;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 48px;
+}
+
+.room-img-preview-img {
+	width: 60%;
 }

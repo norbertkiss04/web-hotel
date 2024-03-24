@@ -6,6 +6,17 @@
     <link rel="stylesheet" href="./css/room_style.css" />
     <script src="https://kit.fontawesome.com/e8a7f12e99.js" crossorigin="anonymous"></script>
     <title>Document</title>
+    <script>
+      function closePreview() {
+        document.getElementById("room-img-preview").style.display = "none";
+      }
+
+      function changePreview(src) {
+        document.getElementById("room-img-preview").style.display = "flex";
+        document.getElementById("room-img").src = src;
+      }
+
+    </script>
   </head>
   <body>
     <header>
@@ -29,22 +40,30 @@
       </div>
     </header>
     <section>
+      <div id="room-img-preview" class="room-img-preview">
+        <div class="room-img-preview-close" onclick="closePreview()">
+          <i class="fa-solid fa-xmark" style="color: #ffffff;"></i>
+        </div>
+        <div class="room-img-preview-img">
+          <img id="room-img" style="width: 100%;" src="img/hotel-room.jpg" />
+        </div>
+      </div>
       <div class="room-container">
         <div class="section-title">Legjobb hotel szoba</div>
         <div class="room-content">
           <div class="w-48p-l">
             <div class="large-img">
-              <img class="img" src="img/hotel-room.jpg" />
+              <img class="img" src="img/hotel-room.jpg" onclick="changePreview(this.src)" />
             </div>
             <div class="small-img-container">
               <div class="small-img">
-                <img class="img" src="img/hotel-room.jpg" />
+                <img class="img" src="img/hotel-room.jpg" onclick="changePreview(this.src)" />
               </div>
               <div class="small-img">
-                <img class="img" src="img/hotel-room.jpg" />
+                <img class="img" src="img/hotel-room.jpg" onclick="changePreview(this.src)" />
               </div>
               <div class="small-img">
-                <img class="img" src="img/hotel-room.jpg" />
+                <img class="img" src="img/hotel-room.jpg" onclick="changePreview(this.src)" />
               </div>
             </div>
           </div>
@@ -83,7 +102,7 @@
                   Ingyenes légkodícionáló
                 </div>
               </div>
-              <div class="room-details-section">
+              <div class="room-details-section-btn">
                 <div class="room-reserving-btn">Foglalás</div>
               </div>
             </div>

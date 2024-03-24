@@ -29,7 +29,6 @@ ol, ul {
     box-sizing: border-box;
     border-bottom: 1px solid rgb(110, 112, 112);
     padding: 40px 0px;
-    /* margin: 0px 20px; */
 }
 
 .logo {
@@ -199,4 +198,162 @@ section {
 
 .fw-600 {
     font-weight: 600;
+}
+
+
+
+.room-content {
+	display: flex;
+	width: 100%;
+}
+
+.w-48p-l {
+	width: 48%;
+	border: 1px solid #ccc;
+	border-right: none;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	padding: 8px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	min-height: 500px;
+}
+
+.w-48p-r {
+	width: 48%;
+	border: 1px solid #ccc;
+	border-left: none;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	padding: 8px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	position: relative;
+	min-height: 500px;
+}
+
+
+.large-img {
+	width: 100%;
+}
+
+.img {
+	width: 100%;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.small-img-container {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	gap: 1%;
+}
+
+.room-details {
+	padding: 16px;
+}
+
+.room-container {
+    margin-bottom: 32px;
+}
+
+.room-details-section {
+	display: flex;
+	flex-direction: column;
+	margin: 16px 0px;
+}
+
+.room-details-section-title {
+	font-size: 1.2rem;
+	font-weight: 600;
+	margin-bottom: 8px;
+	color: #67686a;
+}
+
+.room-details-section-value {
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: #000;
+}
+
+.room-details-section-value-other {
+	font-size: 1.2rem;
+	font-weight: 600;
+	color: #000;
+	display: grid;
+	grid-template-columns: 0.13fr 1fr;
+	justify-content: start;
+}
+
+.room-details-section-btn {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	position: absolute;
+	left: 0px;
+	bottom: 16px;
+	box-sizing: border-box;
+}
+
+.room-reserving-btn {
+	background-color: #000;
+	color: white;
+	padding: 16px 32px;
+	font-size: 18px;
+	font-weight: 600;
+	text-decoration: none;
+	border-radius: 8px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+}
+
+.d-f-j-c-a-c {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+@media screen and (max-width: 1440px) {
+	.w-48p-l {
+		min-height: 400px;
+	}
+}
+
+@media screen and (max-width: 1024px) {
+	.room-content {
+		flex-direction: column;
+		width: 100%;
+	}
+
+	.w-48p-r {
+		width: 100%;
+		border-radius: 0px 0px 8px 8px;
+	}
+	.w-48p-l {
+		width: 100%;
+		border-radius: 8px 8px 0px 0px;
+	}
+
+	.room-container {
+		width: 100%;
+	}
+	
+}
+
+@media screen and (max-width: 1024px) {
+	section {
+		padding: 24px 16px;
+	}
+	
+}
+
+@media screen and (max-width: 320px) {
+	.w-48p-r {
+		min-height: 550px;
+	}
 }
