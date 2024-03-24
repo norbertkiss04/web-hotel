@@ -1,0 +1,225 @@
+*{
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+body {
+    background-color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+
+ol, ul {
+	list-style: none;
+}
+
+.nav-bar {
+    margin-left: 18% !important;
+    width: 80%;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(110, 112, 112);
+    padding: 40px 0px;
+}
+
+.logo {
+    top: 0;
+    left: 0 ;
+    z-index: 10;
+    position: absolute;
+	font-size: 24px;
+    background-color: #000;
+    padding: 40px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+	color: white;
+    margin-left: 40px;
+}
+
+.logo .x{
+    font-weight: 600;
+}
+
+nav ul {
+	display: flex;
+	gap: 20px;
+}
+
+nav a {
+	text-decoration: none;
+	color: #000;
+	font-size: 20px;
+    font-weight: 600;
+}
+
+.my-account-text {
+    text-decoration: none;
+	color: #000;
+	font-size: 20px;
+    font-weight: 600;
+    margin-right: 24px;
+}
+
+.book-now-text {
+    color: white;
+	background-color: #000;
+	padding: 16px 32px;
+    font-size: 18px;
+    font-weight: 600;
+	text-decoration: none;
+}
+
+section {
+    margin: 64px 0px;
+    padding: 24px 64px;
+    width: 100%;
+    box-sizing: border-box;
+	display: flex;
+    flex-direction: column;
+	justify-content: center;
+}
+
+.section-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+	margin-bottom: 32px;
+    text-decoration: underline;
+    text-align: center;
+}
+
+
+.admin-panel-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+    margin: 0 auto;
+}
+
+.admin-panel-form-input {
+    margin-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+}
+
+.admin-panel-spec-input {
+    display: flex;
+    gap: 10px;
+}
+
+.input-form-btn {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    background-color: #000;
+    transition: 0.5s;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f2f2f2;
+}
+
+td:last-child {
+    text-align: center;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #dc3545;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #bd2130;
+}
+
+.checkmark {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #28a745;
+    position: relative;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.included {
+    background-color: #28a745;
+}
+
+.not-included {
+    background-color: #dc3545;
+}
+
+
+.overflow {
+    overflow: auto;
+}
+
+@media screen and (max-width: 768px) {
+    section {
+        padding: 12px 24px;
+    }
+    .admin-panel-form {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    section {
+        padding: 12px 12px;
+    }
+    .admin-panel-form {
+        width: 100%;
+    }
+}
+
