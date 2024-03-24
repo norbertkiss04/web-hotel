@@ -1,0 +1,133 @@
+.hero {
+    background-image: url("../img/hero.jpg");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.62);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 5;
+    padding: 80px;
+    padding-top: 100px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+}
+
+.hero-content .col1 {
+    margin-top: auto;
+}
+
+.col2,
+.col1 {
+    width: 100%;
+}
+
+.our-story {
+    height: 600px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.our-story .col1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 32px;
+}
+
+.our-story .col1 .text {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 60px;
+    width: 500px;
+}
+
+.our-story .col1 p {
+    line-height: 2em;
+    font-size: 18px;
+}
+
+.our-story .col1 h1 {
+    font-size: 64px;
+    margin-bottom: 0;
+}
+
+.our-story .col2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.our-story .col2 img {
+    border: 5px solid #fff;
+}
+
+.our-story .col2 .info {
+    width: 524px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.our-story .col2 .info div {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.our-story .col2 .info div p {
+    font-weight: 600;
+    font-size: 64px;
+}
+
+.our-story .col2 .info div span {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.tagline {
+    display: block;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+h1 {
+    line-height: 1.1em;
+    font-size: 80px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.btn-view-rooms {
+    background-color: transparent;
+    color: white;
+    padding: 18px 32px;
+    text-decoration: none;
+    display: inline-block;
+    border: 2px solid white;
+}
