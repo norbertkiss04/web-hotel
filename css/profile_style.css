@@ -280,8 +280,14 @@ section {
 	
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 768px){
 	.w-48p-r {
 		min-height: 550px;
+	}
+}
+
+@media screen and (max-width: 320px) {
+	.w-48p-r {
+		min-height: 560px;
 	}
 }
