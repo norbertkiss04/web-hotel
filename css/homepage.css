@@ -5,6 +5,33 @@
   position: relative;
 }
 
+.nav-container{
+    position:absolute;
+    width: 100%;
+}
+
+
+
+.nav-bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 74%;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(110, 112, 112);
+    padding: 36px 0;
+    margin: 0 20px;
+
+  }
+
+  .nav-bar a{
+    color: #fff;
+  }
+
 .hero::after {
   content: "";
   position: absolute;
@@ -180,6 +207,22 @@ h1 {
 }
 
 @media (max-width: 830px) {
+
+    .hero-content .col1{
+        margin-top: 100px;
+    }
+    .nav-bar{
+        border:none;
+        position:unset;
+    }
+
+    .hamburger-menu{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+    }
+
   .hero-content .col1 h1 {
     font-size: 64px;
   }
@@ -189,6 +232,16 @@ h1 {
   }
 }
 
+@media(max-width: 768px)
+{
+    .nav-bar a{
+        color: #000
+    }
+
+    .hamburger-menu-icon{
+        color: white;
+    }
+}
 @media (max-width: 600px) {
   .hero-content .col1 .tagline {
     font-size: 16px;
