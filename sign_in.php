@@ -11,10 +11,14 @@
     <title>Bejelentkezés</title>
   </head>
   <?php
+    session_start();
+    if (isset($_SESSION['id'])) {
+      header("Location: ./index.php");
+    }
     if (isset($_POST["email"])) {
         if (!isset($_POST["email"]) || trim($_POST["email"]) === "" || !isset($_POST["password"]) || trim($_POST["password"]) === "") {
-            echo "Minden mező kitöltése kötelező!";
-            return;
+          header("Location: ./sign_in.php?error=emptyfields");
+          return;
         }
         $email = $_POST["email"];
         $password = $_POST["password"];
@@ -31,17 +35,39 @@
                 $_SESSION['id'] = $row["Id"];
                 header("Location: ./index.php");
             } else {
-                echo "Hibás jelszó!";
+                header("Location: ./sign_in.php?error=wrongpassword");
             }
         } else {
-            echo "Nincs ilyen email cím!";
+            header("Location: ./sign_in.php?error=nouser");
         }
         $conn->close();
+    }
+
+    $errormsg;
+    if (isset($_GET["error"])) {
+        if ($_GET["error"] == "wrongpassword") {
+          $errormsg = "Hibás jelszó!";
+        } else if ($_GET["error"] == "nouser") {
+          $errormsg = "Nincs ilyen email cím!";
+        } else if ($_GET["error"] == "emptyfields") {
+          $errormsg = "Minden mezőt ki kell tölteni!";
+        }
+    }
+    $successmsg;
+    if (isset($_GET["msg"])) {
+      if ($_GET["msg"] == "success") {
+        $successmsg = "Sikeres regisztráció, mostmár bejelentkezhetsz";
+      }
     }
   ?>
   <body>
     <div class="sing_in_content_container">
       <div class="sing_in_container">
+        <?php
+          if (isset($successmsg)) {
+            echo "<div class='loginsuccmess'>$successmsg</div>";
+          }
+        ?>
         <div class="logo">
           <p class="x">MDN</p>
           <p>Hotel</p>
@@ -67,8 +93,13 @@
           <div class="input-container">
             <input class="input-form-btn" type="submit" value="Bejelentkezés" />
           </div>
+          <?php
+            if (isset($errormsg)) {
+              echo "<div class='loginerrmsg'>$errormsg</div>";
+            }
+          ?>
           <div class="input-container">
-            <p>Nincs fiókja? <a href="./sign_up.html">Regisztráljon</a></p>
+            <p>Nincs fiókja? <a href="./sign_up.php">Regisztráljon</a></p>
           </div>
         </form>
       </div>

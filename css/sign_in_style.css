@@ -109,3 +109,13 @@ body {
       width: unset;
     }
 }
+
+.loginerrmsg {
+    color: red;
+    font-size: 14px;
+}
+
+.loginsuccmess {
+    color: green;
+    font-size: 14px;
+}

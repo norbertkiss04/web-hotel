@@ -11,16 +11,27 @@
     />
   </head>
   <?php
+    session_start();
+    if (isset($_SESSION['id'])) {
+      header("Location: ./index.php");
+    }
     if (isset($_POST["email"])) {
         if (!isset($_POST["email"]) || trim($_POST["email"]) === "" || !isset($_POST["lastname"]) || trim($_POST["lastname"]) === "" || !isset($_POST["firstname"]) || trim($_POST["firstname"]) === "" || !isset($_POST["password"]) || trim($_POST["password"]) === "") {
             header("Location: sign_up.php?error=emptyfields");
-            echo "Minden mező kitöltése kötelező!";
             return;
         }
         $email = $_POST["email"];
         $lastname = $_POST["lastname"];
         $firstname = $_POST["firstname"];
         $password = $_POST["password"];
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            header("Location: sign_up.php?error=wrongemail");
+            return;
+        }
+        if (strlen($password) < 8) {
+            header("Location: sign_up.php?error=minpasswordlength");
+            return;
+        }
         $hashedpassword = password_hash($password, PASSWORD_DEFAULT);
         $RegDate = date("Y-m-d");
         $conn = new mysqli("localhost", "root", "", "mdnhotel");
@@ -33,18 +44,21 @@
             return;
         }
         $conn->close();
-        echo "Sikeres regisztráció!";
-        header("Location: sign_in.php");
+        header("Location: sign_in.php?msg=success");
+    }
+
+    $errormsg;
+    if (isset($_GET["error"])) {
+        if ($_GET["error"] == "minpasswordlength") {
+          $errormsg = "A jelszónak legalább 8 karakter hosszúnak kell lennie!";
+        } else if ($_GET["error"] == "wrongemail") {
+          $errormsg = "Hibás email cím formátum!";
+        } else if ($_GET["error"] == "emptyfields") {
+          $errormsg = "Minden mezőt ki kell tölteni!";
+        }
     }
   ?>
   <body>
-  <?php
-        if (isset($_GET["error"])) {
-            if ($_GET["error"] == "emptyfields") {
-                echo '<p class="error">Minden mező kitöltése kötelező!</p>';
-            }
-        }
-    ?>
     <div class="sing_in_content_container">
       <div class="sing_in_container">
         <div class="logo">
@@ -82,14 +96,19 @@
               type="password"
               id="password"
               name="password"
-              placeholder="Jelszó"
+              placeholder="Jelszó (Min. 8 karakter)"
             />
           </div>
           <div class="input-container">
             <input class="input-form-btn" type="submit" value="Regisztráció" />
           </div>
+          <?php
+            if (isset($errormsg)) {
+              echo "<div class='loginerrmsg'>$errormsg</div>";
+            }
+          ?>
           <div class="input-container">
-            <p>Már regisztrált? <a href="./sign_in.html">Bejelentkezés</a></p>
+            <p>Már regisztrált? <a href="./sign_in.php">Bejelentkezés</a></p>
           </div>
         </form>
       </div>
