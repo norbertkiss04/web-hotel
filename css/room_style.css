@@ -112,9 +112,9 @@ section {
 	width: 100%;
 	display: flex;
 	justify-content: center;
-	position: absolute;
-	left: 0px;
-	bottom: 16px;
+	/* position: absolute; */
+	/* left: 0px; */
+	/* bottom: 16px; */
 	box-sizing: border-box;
 }
 

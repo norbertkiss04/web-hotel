@@ -26,6 +26,28 @@
       }
     </script>
   </head>
+  <?php
+    include './functions/utils.php';
+    // Get the room id from the URL, and do a database query to get the room details
+    $roomid = $_GET["id"];
+    $conn = new mysqli("localhost", "root", "", "mdnhotel");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $sql = "SELECT * FROM rooms WHERE Id='$roomid'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $roomname = $row["Name"];
+        $roomnumber = $row["RoomNumber"];
+        $price = $row["Price"];
+        $capacity = $row["Capacity"];
+        $wifi = $row["Wifi"];
+        $parking = $row["Balcony"];
+        $ac = $row["AirConditioning"];
+    }
+    $conn->close();
+  ?>
   <body>
     <header>
       <div class="nav-container">
@@ -36,14 +58,25 @@
       <div class="nav-bar">
         <nav class="nav">
           <ul>
-            <li><a href="./index.html">Főoldal</a></li>
-            <li><a href="./reservation.html">Szobáink</a></li>
-            <li><a href="./gallery.html">Galéria</a></li>
+            <li><a href="./index.php">Főoldal</a></li>
+            <li><a href="./reservation.php">Szobáink</a></li>
+            <li><a href="./gallery.php">Galéria</a></li>
           </ul>
         </nav>
         <div class="book-now">
-          <a class="my-account-text" href="./profile.html">Profilom</a>
-          <a class="book-now-text" href="./reservation.html">FOGLALÁS</a>
+          <!-- <a class="my-account-text" href="./profile.php">Profilom</a>
+          <a class="book-now-text" href="./reservation.php">FOGLALÁS</a> -->
+          <?php
+                session_start();
+                if (isset($_SESSION['id'])) {
+                    echo '<a class="book-now-text" href="./reservation.php">FOGLALÁS</a>';
+                    echo '<a class="my-account-text m-l-24" href="./profile.php">Profilom</a>';
+                    echo '<a class="my-account-text" href="./functions/sign_out.php">Kijelentkezés</a>';
+                } else {
+                    echo '<a class="my-account-text" href="./sign_in.php">Bejelentkezés</a>';
+                    echo '<a class="book-now-text" href="./sign_up.php">Regisztráció</a>';
+                }
+            ?>
         </div>
         <div class="hamburger-menu-icon" onclick="showHamburgerMenu()">
           <i class="fa-solid fa-bars"></i>
@@ -54,11 +87,20 @@
             </div>
             <nav class="nav-mobile">
               <ul>
-                <li><a href="./index.html">Főoldal</a></li>
-                <li><a href="./reservation.html">Szobáink</a></li>
-                <li><a href="./gallery.html">Galéria</a></li>
-                <li><a href="./profile.html">Profilom</a></li>
-                <li><a href="./reservation.html">Foglalás</a></li>
+                <li><a href="./index.php">Főoldal</a></li>
+                <li><a href="./reservation.php">Szobáink</a></li>
+                <li><a href="./gallery.php">Galéria</a></li>
+                <?php
+                    session_start();
+                    if (isset($_SESSION['id'])) {
+                        echo '<li><a href="./profile.php">Profilom</a></li>';
+                        echo '<li><a href="./reservation.php">Foglalás</a></li>';
+                        echo '<li><a href="./functions/sign_out.php">Kijelentkezés</a></li>';
+                    } else {
+                        echo '<li><a href="./sign_in.php">Bejelentkezés</a></li>';
+                        echo '<li><a href="./sign_up.php">Regisztráció</a></li>';
+                    }
+                  ?>
               </ul>
             </nav>
           </div>
@@ -75,7 +117,9 @@
         </div>
       </div>
       <div class="room-container">
-        <div class="section-title">Legjobb hotel szoba</div>
+        <?php
+        echo "<div class='section-title'>$roomname</div>"
+        ?>
         <div class="room-content">
           <div class="w-48p-l">
             <div class="large-img">
@@ -113,17 +157,21 @@
             <div class="room-details">
               <div class="room-details-section">
                 <div class="room-details-section-title">Szoba száma:</div>
-                <div class="room-details-section-value">101</div>
+                <?php
+                    echo "<div class='room-details-section-value'>$roomnumber</div>"
+                ?>
               </div>
               <div class="room-details-section">
                 <div class="room-details-section-title">Ár:</div>
-                <div class="room-details-section-value">
-                  15.000 HUF / Éjszaka
-                </div>
+                <?php
+                    echo "<div class='room-details-section-value'>".formatPrice($price)." HUF / Éjszaka</div>"
+                ?>
               </div>
               <div class="room-details-section">
                 <div class="room-details-section-title">Férőhelyek száma:</div>
-                <div class="room-details-section-value">2</div>
+                <?php
+                    echo "<div class='room-details-section-value'>$capacity</div>"
+                ?>
               </div>
               <div class="room-details-section">
                 <div class="room-details-section-title">Egyéb</div>
@@ -131,19 +179,37 @@
                   <div class="d-f-j-c-a-c">
                     <i class="fa-solid fa-wifi"></i>
                   </div>
-                  Ingyenes WIFI
+                    <?php
+                        if ($wifi == 1) {
+                            echo "Ingyenes WIFI";
+                        } else {
+                            echo "Nincs WIFI";
+                        }
+                    ?>
                 </div>
                 <div class="room-details-section-value-other">
-                  <div class="d-f-j-c-a-c">
-                    <i class="fa-solid fa-square-parking"></i>
-                  </div>
-                  Ingyenes parkolási lehetőség
+                    <div class="d-f-j-c-a-c">
+                    <i class="fas fa-door-open"></i>
+                    </div>
+                    <?php
+                        if ($parking == 1) {
+                            echo "Erkélyes szoba";
+                        } else {
+                            echo "Nincs erkély";
+                        }
+                    ?>
                 </div>
                 <div class="room-details-section-value-other">
                   <div class="d-f-j-c-a-c">
                     <i class="fa-solid fa-snowflake"></i>
                   </div>
-                  Ingyenes légkodícionáló
+                    <?php
+                        if ($ac == 1) {
+                            echo "Ingyenes légkodícionáló";
+                        } else {
+                            echo "Nincs légkondícionáló";
+                        }
+                    ?>
                 </div>
               </div>
               <div class="room-details-section-btn">

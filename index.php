@@ -27,14 +27,23 @@
         <div class="nav-bar">
           <nav class="nav">
             <ul>
-              <li><a href="./index.html">Főoldal</a></li>
-              <li><a href="./reservation.html">Szobáink</a></li>
-              <li><a href="./gallery.html">Galéria</a></li>
+              <li><a href="./index.php">Főoldal</a></li>
+              <li><a href="./reservation.php">Szobáink</a></li>
+              <li><a href="./gallery.php">Galéria</a></li>
             </ul>
           </nav>
           <div class="book-now">
-            <a class="my-account-text" href="./profile.html">Profilom</a>
-            <a class="book-now-text" href="./reservation.html">FOGLALÁS</a>
+            <?php
+                session_start();
+                if (isset($_SESSION['id'])) {
+                    echo '<a class="book-now-text" href="./reservation.php">FOGLALÁS</a>';
+                    echo '<a class="my-account-text m-l-24" href="./profile.php">Profilom</a>';
+                    echo '<a class="my-account-text" href="./functions/sign_out.php">Kijelentkezés</a>';
+                } else {
+                    echo '<a class="my-account-text" href="./sign_in.php">Bejelentkezés</a>';
+                    echo '<a class="book-now-text" href="./sign_up.php">Regisztráció</a>';
+                }
+            ?>
           </div>
           <div class="hamburger-menu-icon" onclick="showHamburgerMenu()">
             <i class="fa-solid fa-bars"></i>
@@ -45,11 +54,20 @@
               </div>
               <nav class="nav-mobile">
                 <ul>
-                  <li><a href="./index.html">Főoldal</a></li>
-                  <li><a href="./reservation.html">Szobáink</a></li>
-                  <li><a href="./gallery.html">Galéria</a></li>
-                  <li><a href="./profile.html">Profilom</a></li>
-                  <li><a href="./reservation.html">Foglalás</a></li>
+                  <li><a href="./index.php">Főoldal</a></li>
+                  <li><a href="./reservation.php">Szobáink</a></li>
+                  <li><a href="./gallery.php">Galéria</a></li>
+                  <?php
+                    session_start();
+                    if (isset($_SESSION['id'])) {
+                        echo '<li><a href="./profile.php">Profilom</a></li>';
+                        echo '<li><a href="./reservation.php">Foglalás</a></li>';
+                        echo '<li><a href="./functions/sign_out.php">Kijelentkezés</a></li>';
+                    } else {
+                        echo '<li><a href="./sign_in.php">Bejelentkezés</a></li>';
+                        echo '<li><a href="./sign_up.php">Regisztráció</a></li>';
+                    }
+                  ?>
                 </ul>
               </nav>
             </div>
@@ -63,7 +81,7 @@
               <p>MERÜLJÖN EL</p>
               <p>A KÉNYELEMBEN</p>
             </h1>
-            <a href="#rooms" class="btn-view-rooms">Tekintsd meg szobáinkat</a>
+            <a href="./reservation.php" class="btn-view-rooms">Tekintsd meg szobáinkat</a>
           </div>
           <div class="col2"></div>
         </div>

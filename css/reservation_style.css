@@ -214,3 +214,7 @@
         grid-template-columns: 1fr;
     }
 }
+
+.rooms>a {
+  text-decoration: none;
+}

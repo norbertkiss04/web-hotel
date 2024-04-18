@@ -21,6 +21,24 @@
       }
     </script>
   </head>
+  <?php
+    include './functions/utils.php';
+    // Get the rooms from the database
+    $conn = new mysqli("localhost", "root", "", "mdnhotel");
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }
+    $sql = "SELECT * FROM rooms";
+    $result = $conn->query($sql);
+    $rooms = [];
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $rooms[] = $row;
+        }
+    }
+    $conn->close();
+
+  ?>
   <body>
     <div class="nav-container">
       <div class="logo">
@@ -30,14 +48,23 @@
       <div class="nav-bar">
         <nav class="nav">
           <ul>
-            <li><a href="./index.html">Főoldal</a></li>
-            <li><a href="./reservation.html">Szobáink</a></li>
-            <li><a href="./gallery.html">Galéria</a></li>
+            <li><a href="./index.php">Főoldal</a></li>
+            <li><a href="./reservation.php">Szobáink</a></li>
+            <li><a href="./gallery.php">Galéria</a></li>
           </ul>
         </nav>
         <div class="book-now">
-          <a class="my-account-text" href="./profile.html">Profilom</a>
-          <a class="book-now-text" href="./reservation.html">FOGLALÁS</a>
+        <?php
+                session_start();
+                if (isset($_SESSION['id'])) {
+                    echo '<a class="book-now-text" href="./reservation.php">FOGLALÁS</a>';
+                    echo '<a class="my-account-text m-l-24" href="./profile.php">Profilom</a>';
+                    echo '<a class="my-account-text" href="./functions/sign_out.php">Kijelentkezés</a>';
+                } else {
+                    echo '<a class="my-account-text" href="./sign_in.php">Bejelentkezés</a>';
+                    echo '<a class="book-now-text" href="./sign_up.php">Regisztráció</a>';
+                }
+            ?>
         </div>
         <div class="hamburger-menu-icon" onclick="showHamburgerMenu()">
           <i class="fa-solid fa-bars"></i>
@@ -48,11 +75,20 @@
           </div>
           <nav class="nav-mobile">
             <ul>
-              <li><a href="./index.html">Főoldal</a></li>
-              <li><a href="./reservation.html">Szobáink</a></li>
-              <li><a href="./gallery.html">Galéria</a></li>
-              <li><a href="./profile.html">Profilom</a></li>
-              <li><a href="./reservation.html">Foglalás</a></li>
+              <li><a href="./index.php">Főoldal</a></li>
+              <li><a href="./reservation.php">Szobáink</a></li>
+              <li><a href="./gallery.php">Galéria</a></li>
+              <?php
+                    session_start();
+                    if (isset($_SESSION['id'])) {
+                        echo '<li><a href="./profile.php">Profilom</a></li>';
+                        echo '<li><a href="./reservation.php">Foglalás</a></li>';
+                        echo '<li><a href="./functions/sign_out.php">Kijelentkezés</a></li>';
+                    } else {
+                        echo '<li><a href="./sign_in.php">Bejelentkezés</a></li>';
+                        echo '<li><a href="./sign_up.php">Regisztráció</a></li>';
+                    }
+                  ?>
             </ul>
           </nav>
         </div>
@@ -99,7 +135,34 @@
     </header>
     <section class="room-section">
       <div class="rooms">
-        <div class="room-card" onclick="navigate('./room.html')">
+        <?php
+            foreach($rooms as $room) {
+                echo '<a class="room-card" href="room.php?id='.$room['Id'].'">';
+                echo '<img src="./img/hotel-room.jpg" alt="Room 101" class="room-image" />';
+                echo '<div class="room-info">';
+                echo '<h2 class="room-title">'.$room["Name"].'</h2>';
+                echo '<div class="room-amenities">';
+                if ($room["Wifi"]) {
+                    echo '<span><i class="fas fa-wifi"></i> WiFi</span>';
+                }
+                if ($room["Balcony"]) {
+                    echo '<span><i class="fas fa-door-open"></i> Terasz</span>';
+                }
+                if ($room["AirConditioning"]) {
+                    echo '<span><i class="fas fa-temperature-low"></i> Légkondícionáló</span>';
+                }
+                echo '</div>';
+                echo '<div class="room-capacity">';
+                echo '<span>Férőhely: '.$room["Capacity"].'</span>';
+                echo '</div>';
+                echo '<div class="room-price">';
+                echo '<span>'.formatPrice($room["Price"]).' HUF/Éjszaka</span>';
+                echo '</div>';
+                echo '</div>';
+                echo '</a>';
+            }
+        ?>
+        <!-- <div class="room-card" onclick="navigate('./room.php')">
           <img src="./img/hotel-room.jpg" alt="Room 101" class="room-image" />
           <div class="room-info">
             <h2 class="room-title">Room 101</h2>
@@ -115,7 +178,7 @@
             </div>
           </div>
         </div>
-        <div class="room-card" onclick="navigate('./room.html')">
+        <div class="room-card" onclick="navigate('./room.php')">
           <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
           <div class="room-info">
             <h2 class="room-title">Room 102</h2>
@@ -134,7 +197,7 @@
           </div>
         </div>
 
-        <div class="room-card" onclick="navigate('./room.html')">
+        <div class="room-card" onclick="navigate('./room.php')">
           <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
           <div class="room-info">
             <h2 class="room-title">Room 103</h2>
@@ -152,7 +215,7 @@
             </div>
           </div>
         </div>
-        <div class="room-card" onclick="navigate('./room.html')">
+        <div class="room-card" onclick="navigate('./room.php')">
           <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
           <div class="room-info">
             <h2 class="room-title">Room 104</h2>
@@ -171,7 +234,7 @@
             </div>
           </div>
         </div>
-        <div class="room-card" onclick="navigate('./room.html')">
+        <div class="room-card" onclick="navigate('./room.php')">
           <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
           <div class="room-info">
             <h2 class="room-title">Room 105</h2>
@@ -189,7 +252,7 @@
             </div>
           </div>
         </div>
-        <div class="room-card" onclick="navigate('./room.html')">
+        <div class="room-card" onclick="navigate('./room.php')">
           <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
           <div class="room-info">
             <h2 class="room-title">Room 106</h2>
@@ -207,7 +270,7 @@
             </div>
           </div>
         </div>
-        <div class="room-card" onclick="navigate('./room.html')">
+        <div class="room-card" onclick="navigate('./room.php')">
           <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
           <div class="room-info">
             <h2 class="room-title">Room 107</h2>
@@ -225,7 +288,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </section>
 
     <footer>
