@@ -188,6 +188,16 @@
     font-size: 1.1em;
 }
 
+.submit-btn{
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
 @media(max-width: 1000px){
   .filter{
     flex-wrap: wrap;
