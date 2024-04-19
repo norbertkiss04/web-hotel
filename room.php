@@ -28,8 +28,13 @@
   </head>
   <?php
     include './functions/utils.php';
-    // Get the room id from the URL, and do a database query to get the room details
+    session_start();
     $roomid = $_GET["id"];
+    if (isset($_SESSION['id'])) {
+        $myid = $_SESSION['id'];
+    } else {
+        $myid = 0;
+    }
     $conn = new mysqli("localhost", "root", "", "mdnhotel");
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -46,7 +51,22 @@
         $parking = $row["Balcony"];
         $ac = $row["AirConditioning"];
     }
+
+    $sql = "SELECT users.LastName, users.FirstName, users.ProfileImg, roomrating.Rating, roomrating.Text, roomrating.Date FROM roomrating INNER JOIN users ON users.Id = roomrating.UserId WHERE roomrating.RoomId = '$roomid' ORDER BY roomrating.Date DESC;";
+    $result = $conn->query($sql);
+    $reviews = [];
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $reviews[] = $row;
+        }
+    }
     $conn->close();
+
+    if (isset($_GET['success'])) {
+        if ($_GET['success'] == "reviewadded") {
+            $msg = "Sikeres hozzászólás!";
+        }
+    }
   ?>
   <body>
     <header>
@@ -64,10 +84,7 @@
           </ul>
         </nav>
         <div class="book-now">
-          <!-- <a class="my-account-text" href="./profile.php">Profilom</a>
-          <a class="book-now-text" href="./reservation.php">FOGLALÁS</a> -->
           <?php
-                session_start();
                 if (isset($_SESSION['id'])) {
                     echo '<a class="book-now-text" href="./reservation.php">FOGLALÁS</a>';
                     echo '<a class="my-account-text m-l-24" href="./profile.php">Profilom</a>';
@@ -91,7 +108,6 @@
                 <li><a href="./reservation.php">Szobáink</a></li>
                 <li><a href="./gallery.php">Galéria</a></li>
                 <?php
-                    session_start();
                     if (isset($_SESSION['id'])) {
                         echo '<li><a href="./profile.php">Profilom</a></li>';
                         echo '<li><a href="./reservation.php">Foglalás</a></li>';
@@ -216,6 +232,74 @@
                 <div class="room-reserving-btn">Foglalás</div>
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div class="room-container">
+        <div class="section-title">
+          <h1>Vélemények</h1>
+        </div>
+        <div class="reviews">
+          <?php
+            if (isset($msg)) {
+              echo "<div class='success-msg'>$msg</div>";
+            }
+            if (count($reviews) == 0) {
+                echo "<div class='no-reviews'>Még nincsenek vélemények, légy te az első!</div>";
+            }
+            foreach ($reviews as $review) {
+                $fullname = $review["LastName"] . " " . $review["FirstName"];
+                $profilepic = $review["ProfileImg"];
+                $rating = $review["Rating"];
+                $text = $review["Text"];
+                $date = $review["Date"];
+                echo "<div class='review'>";
+                echo "<div class='review-user'>";
+                echo "<div class='review-user-img'>";
+                echo "<img class='fullimg' src='$profilepic' />";
+                echo "</div>";
+                echo "<div class='review-user-name'>$fullname</div>";
+                echo "</div>";
+                echo "<div>";
+                echo "<div class='review-rating'>";
+                echo "<div class='rating'>$rating/5</div>";
+                echo "</div>";
+                echo "<div>";
+                echo "<p class='review-text'>$text</p>";
+                echo "<span class='palegray'>".formatDate($date)."</span>";
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+            }
+          ?>
+        <div class="write-review">
+          <div class="section-title">
+            <h1>Vélemény írása</h1>
+          </div>
+          <div class="review-form">
+            <form action="./functions/add_review.php" method="POST">
+              <div class="review-form-section">
+                <label for="rating">Értékelés:</label>
+                <select name="rating" id="rating" required>
+                  <option value="5">5/5</option>
+                  <option value="4">4/5</option>
+                  <option value="3">3/5</option>
+                  <option value="2">2/5</option>
+                  <option value="1">1/5</option>
+                </select>
+              </div>
+              <div class="review-form-section">
+                <label for="review">Vélemény:</label>
+                <textarea class="review-textbox" name="review" id="review" required></textarea>
+              </div>
+              <div class="review-form-section">
+                <input type="hidden" name="roomid" value="<?php echo $roomid; ?>" />
+                <input type="hidden" name="userid" value="<?php echo $myid; ?>" />
+                <input class="sendreview" type="submit" value="Küldés" />
+              </div>
+            </form>
           </div>
         </div>
       </div>

@@ -51,6 +51,8 @@
           $errormsg = "Nincs ilyen email cím!";
         } else if ($_GET["error"] == "emptyfields") {
           $errormsg = "Minden mezőt ki kell tölteni!";
+        } else if ($_GET["error"] == "notloggedin") {
+          $errormsg = "Be kell jelentkezni!";
         }
     }
     $successmsg;

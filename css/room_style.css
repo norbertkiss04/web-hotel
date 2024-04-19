@@ -208,3 +208,69 @@ section {
 .room-img-preview-img {
 	width: 60%;
 }
+
+.ratings-container {
+	display: flex;
+}
+
+.reviews {
+	display: flex;
+	flex-direction: column;
+	gap: 32px;
+}
+
+.review {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 16px;
+}
+
+.review-user-img {
+	width: 32px;
+	height: 32px;
+}
+
+.review-user {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+}
+
+.fullimg {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+
+.rating {
+	font-weight: 600;
+}
+
+.sendreview {
+	background-color: #000;
+	color: white;
+	padding: 8px 16px;
+	border-radius: 8px;
+	margin-top: 16px;
+}
+
+.review-form-section {
+	display: flex;
+	gap: 8px;
+	margin-bottom: 8px;
+}
+
+.write-review {
+	margin-top: 64px;
+}
+
+.review-textbox {
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	min-width: 200px;
+}
+
+.palegray {
+	color: gray;
+}
