@@ -142,6 +142,10 @@
         </div>
       </div>
       <button class="update-profile-btn" onclick="showUpdateForm()">Profil Frissítése</button>
+      <form action="./functions/delete_profile.php" method="POST">
+        <input type="hidden" name="userid" value="<?php echo $myid; ?>">
+        <button class="update-profile-btn red">Profil Törlése</button>
+      </form>
 
 <div id="updateForm" class="update-form-container" style="display:none;">
     <form action="./functions/update_profile.php" method="post" enctype="multipart/form-data">
