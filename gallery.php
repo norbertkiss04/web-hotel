@@ -80,34 +80,19 @@
             </div>
             <div class="gallery-small">
                 <div class="gallery-small-img">
-                    <img class="img" src="./img/hotel-room.jpg" alt="Image" onclick="changeImg(this.src)">
-                </div>
-                <div class="gallery-small-img">
-                    <img class="img" src="./img/hotel-room.jpg" alt="Image" onclick="changeImg(this.src)">
-                </div>
-                <div class="gallery-small-img">
                     <img class="img" src="./img/hero.jpg" alt="Image" onclick="changeImg(this.src)">
                 </div>
                 <div class="gallery-small-img">
-                    <img class="img" src="./img/hero.jpg" alt="Image" onclick="changeImg(this.src)">
+                    <img class="img" src="./img/gallery.jpg" alt="Image" onclick="changeImg(this.src)">
                 </div>
                 <div class="gallery-small-img">
-                    <img class="img" src="./img/hero2.jpg" alt="Image" onclick="changeImg(this.src)">
+                    <img class="img" src="./img/gallery2.jpg" alt="Image" onclick="changeImg(this.src)">
                 </div>
                 <div class="gallery-small-img">
-                    <img class="img" src="./img/hero2.jpg" alt="Image" onclick="changeImg(this.src)">
+                    <img class="img" src="./img/gallery3.jpg" alt="Image" onclick="changeImg(this.src)">
                 </div>
                 <div class="gallery-small-img">
-                    <img class="img" src="./img/hero2.jpg" alt="Image" onclick="changeImg(this.src)">
-                </div>
-                <div class="gallery-small-img">
-                    <img class="img" src="./img/hotel-room.jpg" alt="Image" onclick="changeImg(this.src)">
-                </div>
-                <div class="gallery-small-img">
-                    <img class="img" src="./img/hotel-room.jpg" alt="Image" onclick="changeImg(this.src)">
-                </div>
-                <div class="gallery-small-img">
-                    <img class="img" src="./img/hotel-room.jpg" alt="Image" onclick="changeImg(this.src)">
+                    <img class="img" src="./img/room2.jpg" alt="Image" onclick="changeImg(this.src)">
                 </div>
                 <div class="gallery-small-img">
                     <img class="img" src="./img/hotel-room.jpg" alt="Image" onclick="changeImg(this.src)">
