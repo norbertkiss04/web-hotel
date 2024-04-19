@@ -18,7 +18,6 @@
             die("Connection failed: " . $conn->connect_error);
         }
 
-        // Initialize whereClauses array for dynamic SQL
         $whereClauses = [];
         if (isset($_GET['wifi']) && $_GET['wifi'] == '1') {
             $whereClauses[] = "Wifi = 1";

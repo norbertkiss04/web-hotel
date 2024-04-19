@@ -141,7 +141,29 @@
           </div>
         </div>
       </div>
+      <button class="update-profile-btn" onclick="showUpdateForm()">Profil Frissítése</button>
+
+<div id="updateForm" class="update-form-container" style="display:none;">
+    <form action="./functions/update_profile.php" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="firstname">Keresztnév:</label>
+            <input type="text" name="firstname" id="firstname" value="<?php echo $firstname; ?>">
+        </div>
+        <div class="form-group">
+            <label for="lastname">Vezetéknév:</label>
+            <input type="text" name="lastname" id="lastname" value="<?php echo $lastname; ?>">
+        </div>
+        <div class="form-group">
+            <label for="profilepic">Profil kép:</label>
+            <input type="file" name="profilepic" id="profilepic">
+        </div>
+        <button type="submit">Mentés</button>
+        <button type="button" onclick="hideUpdateForm()">Mégsem</button>
+    </form>
+</div>
+
     </section>
+
     <section>
       <h1 class="section-title">Foglalások listája</h1>
       <?php
@@ -221,118 +243,16 @@
             }
         }
       ?>
-      <!-- <div class="bookings-section">
-        <div class="room-container">
-          <div class="room-content">
-            <div class="w-48p-l">
-              <div class="large-img">
-                <img class="img" src="img/hotel-room.jpg" />
-              </div>
-            </div>
-            <div class="w-48p-r">
-              <div class="room-details">
-              <div class="room-details-section">
-                  <div class="room-details-section-title">Foglalás periódusa:</div>
-                  <div class="room-details-section-value">2024.04.18. - 2024.04.20.</div>
-                </div>
-                <div class="room-details-section">
-                  <div class="room-details-section-title">Szoba száma:</div>
-                  <div class="room-details-section-value">101</div>
-                </div>
-                <div class="room-details-section">
-                  <div class="room-details-section-title">Ár:</div>
-                  <div class="room-details-section-value">
-                    15.000 HUF / Éjszaka
-                  </div>
-                </div>
-                <div class="room-details-section">
-                  <div class="room-details-section-title">
-                    Férőhelyek száma:
-                  </div>
-                  <div class="room-details-section-value">2</div>
-                </div>
-                <div class="room-details-section">
-                  <div class="room-details-section-title">Egyéb</div>
-                  <div class="room-details-section-value-other">
-                    <div class="d-f-j-c-a-c">
-                      <i class="fa-solid fa-wifi"></i>
-                    </div>
-                    Ingyenes WIFI
-                  </div>
-                  <div class="room-details-section-value-other">
-                    <div class="d-f-j-c-a-c">
-                      <i class="fa-solid fa-square-parking"></i>
-                    </div>
-                    Ingyenes parkolási lehetőség
-                  </div>
-                  <div class="room-details-section-value-other">
-                    <div class="d-f-j-c-a-c">
-                      <i class="fa-solid fa-snowflake"></i>
-                    </div>
-                    Ingyenes légkodícionáló
-                  </div>
-                </div>
-                <div class="room-details-section-btn">
-                  <div class="room-reserving-btn">Lemondás</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="room-container">
-          <div class="room-content">
-            <div class="w-48p-l">
-              <div class="large-img">
-                <img class="img" src="img/hotel-room.jpg" />
-              </div>
-            </div>
-            <div class="w-48p-r">
-              <div class="room-details">
-                <div class="room-details-section">
-                  <div class="room-details-section-title">Szoba száma:</div>
-                  <div class="room-details-section-value">223</div>
-                </div>
-                <div class="room-details-section">
-                  <div class="room-details-section-title">Ár:</div>
-                  <div class="room-details-section-value">
-                    27.500 HUF / Éjszaka
-                  </div>
-                </div>
-                <div class="room-details-section">
-                  <div class="room-details-section-title">
-                    Férőhelyek száma:
-                  </div>
-                  <div class="room-details-section-value">4</div>
-                </div>
-                <div class="room-details-section">
-                  <div class="room-details-section-title">Egyéb</div>
-                  <div class="room-details-section-value-other">
-                    <div class="d-f-j-c-a-c">
-                      <i class="fa-solid fa-wifi"></i>
-                    </div>
-                    Ingyenes WIFI
-                  </div>
-                  <div class="room-details-section-value-other">
-                    <div class="d-f-j-c-a-c">
-                      <i class="fa-solid fa-square-parking"></i>
-                    </div>
-                    Ingyenes parkolási lehetőség
-                  </div>
-                  <div class="room-details-section-value-other">
-                    <div class="d-f-j-c-a-c">
-                      <i class="fa-solid fa-snowflake"></i>
-                    </div>
-                    Ingyenes légkodícionáló
-                  </div>
-                </div>
-                <div class="room-details-section-btn">
-                  <div class="room-reserving-btn">Lemondás</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </section>
+    <script>
+      function showUpdateForm() {
+    document.getElementById('updateForm').style.display = 'block';
+}
+
+function hideUpdateForm() {
+    document.getElementById('updateForm').style.display = 'none';
+}
+
+    </script>
   </body>
 </html>
