@@ -1,46 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="./css/global.css" />
     <link rel="stylesheet" href="./css/reservation_style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <script src="./js/global.js"></script>
-    <script>
-      function navigate(url) {
-        window.location.href = url;
-      }
-    </script>
-  </head>
-  <?php
-    include './functions/utils.php';
-    // Get the rooms from the database
-    $conn = new mysqli("localhost", "root", "", "mdnhotel");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    $sql = "SELECT * FROM rooms";
-    $result = $conn->query($sql);
-    $rooms = [];
-    if ($result->num_rows > 0) {
-        while ($row = $result->fetch_assoc()) {
-            $rooms[] = $row;
+</head>
+<body>
+    <?php
+        include './functions/utils.php';
+        $conn = new mysqli("localhost", "root", "", "mdnhotel");
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
         }
-    }
-    $conn->close();
 
-  ?>
-  <body>
-    <div class="nav-container">
+        // Initialize whereClauses array for dynamic SQL
+        $whereClauses = [];
+        if (isset($_GET['wifi']) && $_GET['wifi'] == '1') {
+            $whereClauses[] = "Wifi = 1";
+        }
+        if (isset($_GET['balcony']) && $_GET['balcony'] == '1') {
+            $whereClauses[] = "Balcony = 1";
+        }
+        if (isset($_GET['ac']) && $_GET['ac'] == '1') {
+            $whereClauses[] = "AirConditioning = 1";
+        }
+        if (!empty($_GET['people'])) {
+            $whereClauses[] = "Capacity >= " . intval($_GET['people']);
+        }
+        if (!empty($_GET['price'])) {
+            $whereClauses[] = "Price <= " . intval($_GET['price']);
+        }
+
+        $sql = "SELECT * FROM rooms";
+        if (!empty($whereClauses)) {
+            $sql .= " WHERE " . implode(" AND ", $whereClauses);
+        }
+        $result = $conn->query($sql);
+        $rooms = [];
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $rooms[] = $row;
+            }
+        }
+        $conn->close();
+    ?>
+
+<div class="nav-container">
       <div class="logo">
         <p class="x">MDN</p>
         <p>Hotel</p>
@@ -94,201 +104,78 @@
         </div>
       </div>
     </div>
-    <header class="up">
-      <div>
-        <h1>Szobáink</h1>
-        <div class="filter">
-          <span class="filter-label">Filterek:</span>
-          <label class="custom-checkbox"
-            ><i class="fas fa-wifi icon"></i>WiFi<input
-              type="checkbox"
-              name="wifi" /><span class="checkmark"></span
-          ></label>
-          <label class="custom-checkbox"
-            ><i class="fas fa-door-open icon"></i>Terasz<input
-              type="checkbox"
-              name="balcony" /><span class="checkmark"></span
-          ></label>
-          <label class="custom-checkbox"
-            ><i class="fas fa-snowflake icon"></i>Légkondícionáló<input
-              type="checkbox"
-              name="ac" /><span class="checkmark"></span
-          ></label>
-          <label
-            ><i class="fas fa-users icon"></i
-            ><select name="people">
-              <option value="1">1 Személy</option>
-              <option value="2">2 Személy</option>
-              <option value="3">3 Személy</option>
-              <option value="4">4+ Személy</option>
-            </select></label
-          >
-          <label
-            ><i class="fas fa-dollar-sign icon"></i>Maximlis ár<input
-              type="number"
-              class="input-field"
-              name="price"
-              min="0"
-          /></label>
-        </div>
-      </div>
-    </header>
-    <section class="room-section">
-      <div class="rooms">
-        <?php
-            foreach($rooms as $room) {
-                echo '<a class="room-card" href="room.php?id='.$room['Id'].'">';
-                echo '<img src="./img/hotel-room.jpg" alt="Room 101" class="room-image" />';
-                echo '<div class="room-info">';
-                echo '<h2 class="room-title">'.$room["Name"].'</h2>';
-                echo '<div class="room-amenities">';
-                if ($room["Wifi"]) {
-                    echo '<span><i class="fas fa-wifi"></i> WiFi</span>';
-                }
-                if ($room["Balcony"]) {
-                    echo '<span><i class="fas fa-door-open"></i> Terasz</span>';
-                }
-                if ($room["AirConditioning"]) {
-                    echo '<span><i class="fas fa-temperature-low"></i> Légkondícionáló</span>';
-                }
-                echo '</div>';
-                echo '<div class="room-capacity">';
-                echo '<span>Férőhely: '.$room["Capacity"].'</span>';
-                echo '</div>';
-                echo '<div class="room-price">';
-                echo '<span>'.formatPrice($room["Price"]).' HUF/Éjszaka</span>';
-                echo '</div>';
-                echo '</div>';
-                echo '</a>';
-            }
-        ?>
-        <!-- <div class="room-card" onclick="navigate('./room.php')">
-          <img src="./img/hotel-room.jpg" alt="Room 101" class="room-image" />
-          <div class="room-info">
-            <h2 class="room-title">Room 101</h2>
-            <div class="room-amenities">
-              <span><i class="fas fa-wifi"></i> WiFi</span>
-              <span><i class="fas fa-door-open"></i> Terasz</span>
-            </div>
-            <div class="room-capacity">
-              <span>Férőhely: 2 </span>
-            </div>
-            <div class="room-price">
-              <span>42.000 HUF/Éjszaka</span>
-            </div>
-          </div>
-        </div>
-        <div class="room-card" onclick="navigate('./room.php')">
-          <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
-          <div class="room-info">
-            <h2 class="room-title">Room 102</h2>
-            <div class="room-amenities">
-              <span><i class="fas fa-sun"></i> Terasz </span>
-              <span
-                ><i class="fas fa-temperature-low"></i> Légkondícionáló</span
-              >
-            </div>
-            <div class="room-capacity">
-              <span>Férőhely: 3 </span>
-            </div>
-            <div class="room-price">
-              <span>65.000 HUF/Éjszaka</span>
-            </div>
-          </div>
-        </div>
 
-        <div class="room-card" onclick="navigate('./room.php')">
-          <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
-          <div class="room-info">
-            <h2 class="room-title">Room 103</h2>
-            <div class="room-amenities">
-              <span><i class="fas fa-sun"></i> Terasz </span>
-              <span
-                ><i class="fas fa-temperature-low"></i> Légkondícionáló</span
-              >
-            </div>
-            <div class="room-capacity">
-              <span>Férőhely: 3 </span>
-            </div>
-            <div class="room-price">
-              <span>65.000 HUF/Éjszaka</span>
-            </div>
-          </div>
+    <header class="up">
+        <div>
+            <h1>Szobáink</h1>
+            <form method="GET" action="reservation.php">
+                <div class="filter">
+                    <span class="filter-label">Filterek:</span>
+                    <label class="custom-checkbox">
+                        <i class="fas fa-wifi icon"></i>WiFi
+                        <input type="checkbox" name="wifi" value="1" <?= isset($_GET['wifi']) ? 'checked' : '' ?>/>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="custom-checkbox">
+                        <i class="fas fa-door-open icon"></i>Terasz
+                        <input type="checkbox" name="balcony" value="1" <?= isset($_GET['balcony']) ? 'checked' : '' ?>/>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="custom-checkbox">
+                        <i class="fas fa-snowflake icon"></i>Légkondícionáló
+                        <input type="checkbox" name="ac" value="1" <?= isset($_GET['ac']) ? 'checked' : '' ?>/>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label>
+                        <i class="fas fa-users icon"></i>
+                        <select name="people">
+                            <option value="">Mindenki</option>
+                            <option value="1" <?= $_GET['people'] === '1' ? 'selected' : '' ?>>1 Személy</option>
+                            <option value="2" <?= $_GET['people'] === '2' ? 'selected' : '' ?>>2 Személy</option>
+                            <option value="3" <?= $_GET['people'] === '3' ? 'selected' : '' ?>>3 Személy</option>
+                            <option value="4" <?= $_GET['people'] === '4' ? 'selected' : '' ?>>4+ Személy</option>
+                        </select>
+                    </label>
+                    <label>
+                        <i class="fas fa-dollar-sign icon"></i>Maximlis ár
+                        <input type="number" class="input-field" name="price" min="0" value="<?= $_GET['price'] ?? '' ?>"/>
+                    </label>
+                    <button type="submit" class="submit-btn">Keresés</button>
+                </div>
+            </form>
         </div>
-        <div class="room-card" onclick="navigate('./room.php')">
-          <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
-          <div class="room-info">
-            <h2 class="room-title">Room 104</h2>
-            <div class="room-amenities">
-              <span><i class="fas fa-wifi"></i> WiFi</span>
-              <span><i class="fas fa-sun"></i> Terasz </span>
-              <span
-                ><i class="fas fa-temperature-low"></i> Légkondícionáló</span
-              >
-            </div>
-            <div class="room-capacity">
-              <span>Férőhely: 3 </span>
-            </div>
-            <div class="room-price">
-              <span>65.000 HUF/Éjszaka</span>
-            </div>
-          </div>
+    </header>
+
+    <section class="room-section">
+        <div class="rooms">
+            <?php foreach($rooms as $room) { ?>
+                <a class="room-card" href="room.php?id=<?= $room['Id'] ?>">
+                    <img src="./img/hotel-room.jpg" alt="<?= htmlspecialchars($room["Name"]) ?>" class="room-image" />
+                    <div class="room-info">
+                        <h2 class="room-title"><?= htmlspecialchars($room["Name"]) ?></h2>
+                        <div class="room-amenities">
+                            <?php
+                                if ($room["Wifi"]) {
+                                    echo '<span><i class="fas fa-wifi"></i> WiFi</span>';
+                                }
+                                if ($room["Balcony"]) {
+                                    echo '<span><i class="fas fa-door-open"></i> Terasz</span>';
+                                }
+                                if ($room["AirConditioning"]) {
+                                    echo '<span><i class="fas fa-temperature-low"></i> Légkondícionáló</span>';
+                                }
+                            ?>
+                        </div>
+                        <div class="room-capacity">
+                            <span>Férőhely: <?= $room["Capacity"] ?></span>
+                        </div>
+                        <div class="room-price">
+                            <span><?= formatPrice($room["Price"]) ?> HUF/Éjszaka</span>
+                        </div>
+                    </div>
+                </a>
+            <?php } ?>
         </div>
-        <div class="room-card" onclick="navigate('./room.php')">
-          <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
-          <div class="room-info">
-            <h2 class="room-title">Room 105</h2>
-            <div class="room-amenities">
-              <span><i class="fas fa-wifi"></i> WiFi</span>
-              <span
-                ><i class="fas fa-temperature-low"></i> Légkondícionáló</span
-              >
-            </div>
-            <div class="room-capacity">
-              <span>Férőhely: 3</span>
-            </div>
-            <div class="room-price">
-              <span>65.000 HUF/Éjszaka</span>
-            </div>
-          </div>
-        </div>
-        <div class="room-card" onclick="navigate('./room.php')">
-          <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
-          <div class="room-info">
-            <h2 class="room-title">Room 106</h2>
-            <div class="room-amenities">
-              <span><i class="fas fa-wifi"></i> WiFi</span>
-              <span
-                ><i class="fas fa-temperature-low"></i> Légkondícionáló</span
-              >
-            </div>
-            <div class="room-capacity">
-              <span>Férőhely: 3 </span>
-            </div>
-            <div class="room-price">
-              <span>65.000 HUF/Éjszaka</span>
-            </div>
-          </div>
-        </div>
-        <div class="room-card" onclick="navigate('./room.php')">
-          <img src="./img/hotel-room.jpg" alt="Room 102" class="room-image" />
-          <div class="room-info">
-            <h2 class="room-title">Room 107</h2>
-            <div class="room-amenities">
-              <span><i class="fas fa-wifi"></i> WiFi</span>
-              <span
-                ><i class="fas fa-temperature-low"></i> Légkondícionáló</span
-              >
-            </div>
-            <div class="room-capacity">
-              <span>Férőhely: 3 </span>
-            </div>
-            <div class="room-price">
-              <span>65.000 HUF/Éjszaka</span>
-            </div>
-          </div>
-        </div>
-      </div> -->
     </section>
 
     <footer>
@@ -315,5 +202,5 @@
         </div>
       </div>
     </footer>
-  </body>
+</body>
 </html>
