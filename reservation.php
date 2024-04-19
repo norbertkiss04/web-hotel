@@ -129,10 +129,10 @@
                         <i class="fas fa-users icon"></i>
                         <select name="people">
                             <option value="">Mindenki</option>
-                            <option value="1" <?= $_GET['people'] === '1' ? 'selected' : '' ?>>1 Személy</option>
-                            <option value="2" <?= $_GET['people'] === '2' ? 'selected' : '' ?>>2 Személy</option>
-                            <option value="3" <?= $_GET['people'] === '3' ? 'selected' : '' ?>>3 Személy</option>
-                            <option value="4" <?= $_GET['people'] === '4' ? 'selected' : '' ?>>4+ Személy</option>
+                            <option value="1" <?= isset($_GET['people']) && $_GET['people'] === '1' ? 'selected' : '' ?>>1 Személy</option>
+                            <option value="2" <?= isset($_GET['people']) && $_GET['people'] === '2' ? 'selected' : '' ?>>2 Személy</option>
+                            <option value="3" <?= isset($_GET['people']) && $_GET['people'] === '3' ? 'selected' : '' ?>>3 Személy</option>
+                            <option value="4" <?= isset($_GET['people']) && $_GET['people'] === '4' ? 'selected' : '' ?>>4+ Személy</option>
                         </select>
                     </label>
                     <label>
