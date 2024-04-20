@@ -1,6 +1,6 @@
 <?php
-    if (isset($_POST['userid'])) {
-        $id = $_POST['userid'];
+    if (isset($_GET['userid'])) {
+        $id = $_GET['userid'];
         $conn = new mysqli("localhost", "root", "", "mdnhotel");
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
@@ -14,6 +14,16 @@
         if ($conn->query($sql) === FALSE) {
             echo "Error: " . $sql . "<br>" . $conn->error;
             return;
+        }
+        $sql = "SELECT * FROM users WHERE Id='$id'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $image = $row['ProfileImg'];
+        }
+        echo $image;
+        if ($image != "DefaultProfileImg.png") {
+            unlink("./../uploads/".$image);
         }
         $sql = "DELETE FROM users WHERE Id='$id'";
         if ($conn->query($sql) === FALSE) {

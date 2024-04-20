@@ -21,3 +21,12 @@ function deleteRoom(roomId) {
         window.location.href = './functions/delete_room.php?roomId=' + roomId;
     }
 }
+function editRoom(roomId) {
+        window.location.href = './editroom.php?roomId=' + roomId;
+}
+function deleteProfile(userid) {
+    console.log(userid);
+    if (confirm('Biztosan törölni szeretnéd a profilt?')) {
+        window.location.href = './functions/delete_profile.php?userid=' + userid;
+    }
+}

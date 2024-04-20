@@ -145,7 +145,7 @@
                     echo "<td>" . ($row['Wifi'] ? 'Igen' : 'Nincs') . "</td>";
                     echo "<td>" . ($row['Balcony'] ? 'Igen' : 'Nincs') . "</td>";
                     echo "<td>" . ($row['AirConditioning'] ? 'Igen' : 'Nincs') . "</td>";
-                    echo '<td><button onclick="deleteRoom(' . $row['Id'] . ')">Delete</button></td>';
+                    echo '<td><button class="editroom" onclick="editRoom(' . $row['Id'] . ')">Módosítás</button><button onclick="deleteRoom(' . $row['Id'] . ')">Delete</button></td>';
                     echo "</tr>";
                 }
             } else {
