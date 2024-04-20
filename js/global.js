@@ -15,3 +15,9 @@ function changeImg(src) {
 function formatPrice(price) {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
+function deleteRoom(roomId) {
+    if (confirm('Biztosan törölni szeretnéd a szobát?')) {
+        console.log(roomId);
+        window.location.href = './functions/delete_room.php?roomId=' + roomId;
+    }
+}

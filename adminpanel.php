@@ -7,12 +7,16 @@
     <link rel="stylesheet" href="./css/global.css" />
     <link rel="stylesheet" href="./css/adminpanel_style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <script src="./js/global.js"></script>
 </head>
 <body>
 <?php
     if (isset($_GET['msg'])) {
         if ($_GET['msg'] == 'success') {
             $msg = 'Szoba sikeresen hozzáadva.';
+        }
+        if ($_GET['msg'] == 'roomdeleted') {
+            $msg = 'Szoba sikeresen törölve.';
         }
     }
     if (isset($_GET['war'])) {
@@ -139,8 +143,7 @@
                     echo "<td>" . ($row['Wifi'] ? 'Igen' : 'Nincs') . "</td>";
                     echo "<td>" . ($row['Balcony'] ? 'Igen' : 'Nincs') . "</td>";
                     echo "<td>" . ($row['AirConditioning'] ? 'Igen' : 'Nincs') . "</td>";
-                    echo '<td><button onclick="">Delete</button></td>';
-                    // echo '<td><button onclick="deleteRoom(' . $row['RoomNumber'] . ')">Delete</button></td>';
+                    echo '<td><button onclick="deleteRoom(' . $row['Id'] . ')">Delete</button></td>';
                     echo "</tr>";
                 }
             } else {
