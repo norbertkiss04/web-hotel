@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2024 at 11:05 PM
+-- Generation Time: Apr 21, 2024 at 12:18 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.0.28
 
@@ -89,8 +89,8 @@ CREATE TABLE `rooms` (
 --
 
 INSERT INTO `rooms` (`Id`, `Name`, `Price`, `Capacity`, `Wifi`, `Balcony`, `AirConditioning`, `Image`) VALUES
-(1, 'Első Teszt szoba', 15000, 2, 1, 0, 1, 'hero.jpg'),
-(2, 'Masodk', 7000, 1, 0, 1, 0, 'hero.jpg');
+(1, 'Első Teszt szoba', 15000, 2, 0, 0, 0, 'hero.jpg'),
+(2, 'Masodikk', 7001, 4, 0, 1, 1, 'hero.jpg');
 
 -- --------------------------------------------------------
 
@@ -177,7 +177,7 @@ ALTER TABLE `rooms`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- Constraints for dumped tables
