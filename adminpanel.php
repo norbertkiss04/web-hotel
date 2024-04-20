@@ -93,10 +93,12 @@
     }
     ?>
     <div class="section-title">Szobák hozzáadása</div>
-    <form class="admin-panel-form" id="addRoomForm" method="post" action="./functions/add_room.php">
+    <form class="admin-panel-form" id="addRoomForm" method="post" action="./functions/add_room.php" enctype="multipart/form-data">
         <input class="admin-panel-form-input" type="text" id="roomName" name="roomName" required placeholder="Szoba neve" />
         <input class="admin-panel-form-input" type="number" id="capacity" min="0" max="5" name="capacity" required placeholder="Férőhely" />
         <input class="admin-panel-form-input" type="number" id="price" name="price" required placeholder="Ár / Éjszaka" />
+            <label for="roompic">Kép a szobáról:</label>
+            <input type="file" name="roompic" id="roompic">
         <div class="admin-panel-spec-input">
             <input type="checkbox" id="freewifi" name="freewifi" value="FreeWifi" />
             <label for="freewifi">Ingyenes internet</label><br />

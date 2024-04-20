@@ -1,8 +1,6 @@
 <?php
 session_start();
-include './utils.php'; // Assume this contains necessary utility functions.
 
-// Check if user is logged in
 if (!isset($_SESSION['id'])) {
     header("Location: ../sign_in.php");
     exit();
@@ -13,14 +11,12 @@ $firstName = $_POST['firstname'] ?? '';
 $lastName = $_POST['lastname'] ?? '';
 $profilePic = $_FILES['profilepic'];
 
-// Database connection
 $conn = new mysqli("localhost", "root", "", "mdnhotel");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
 try {
-    // Start transaction
     $conn->begin_transaction();
 
     $query = "UPDATE users SET FirstName = ?, LastName = ? WHERE Id = ?";
@@ -28,31 +24,37 @@ try {
     $stmt->bind_param("ssi", $firstName, $lastName, $userId);
     $stmt->execute();
     
-    // Check if a new profile picture was uploaded
     if ($profilePic['error'] == UPLOAD_ERR_OK) {
-        $tmpName = $profilePic['tmp_name'];
-        $imgData = file_get_contents($tmpName);
-        $base64 = 'data:' . $profilePic['type'] . ';base64,' . base64_encode($imgData);
-
-        $query = "UPDATE users SET ProfileImg = ? WHERE Id = ?";
-        $stmt = $conn->prepare($query);
-        $stmt->bind_param("si", $base64, $userId);
-        $stmt->execute();
+        $target_dir = "./../uploads/";
+        $target_file = $target_dir . basename($_FILES['profilepic']["name"]);
+        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+        $check = getimagesize($_FILES['profilepic']["tmp_name"]);
+        if($check !== false) {
+            echo "File is an image - " . $check["mime"] . ".";
+        } else {
+            echo "File is not an image.";
+            header('Location: ./../profile.php?err=notimg');
+        }
+        if (move_uploaded_file($_FILES['profilepic']["tmp_name"], $target_file)) {
+            $sql = "UPDATE users SET ProfileImg = ? WHERE Id = ?";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("si", $_FILES['profilepic']["name"], $userId);
+            $stmt->execute();
+            header('Location: ./../profile.php');
+          } else {
+            echo "Sorry, there was an error uploading your file.";
+            header('Location: ./../profile.php?err=unexpectederr');
+          }
     }
 
-    // Commit transaction
     $conn->commit();
 
-    echo "Profile updated successfully.";
 } catch (Exception $e) {
-    $conn->rollback(); // Rollback changes on error
+    $conn->rollback();
     echo "Error updating profile: " . $e->getMessage();
 }
 
 $stmt->close();
 $conn->close();
 
-// Redirect back to profile page
-header('Location: ../profile.php');
-exit();
 ?>

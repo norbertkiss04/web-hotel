@@ -119,10 +119,9 @@
       <div class="profile-details">
         <div class="profile-content">
             <div class="profile-img-container">
-                <!-- <img src="./img/hero.jpg" alt="Profil kép" class="profile-img" /> -->
                 <?php
 
-                echo '<img src='."$profilepic".' alt="Profil kép" class="profile-img" />';
+                echo '<img src="./uploads/'.$profilepic.'" alt="Profil kép" class="profile-img" />';
                 ?>
             </div>
             <div class="profile-details">

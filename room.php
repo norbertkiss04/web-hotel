@@ -22,7 +22,7 @@ if ($result->num_rows > 0) {
     $wifi = $row['Wifi'];
     $parking = $row['Balcony'];
     $ac = $row['AirConditioning'];
-    // $image = $row['Image'];
+    $image = $row['Image'];
 }
 
 $sql = "SELECT users.LastName, users.FirstName, users.ProfileImg, roomrating.Rating, roomrating.Text, roomrating.Date FROM roomrating INNER JOIN users ON users.Id = roomrating.UserId WHERE roomrating.RoomId = '$roomid' ORDER BY roomrating.Date DESC;";
@@ -154,11 +154,9 @@ if (isset($_GET['error'])) {
         <div class="room-content">
             <div class="w-48p-l">
                 <div class="large-img">
-                    <img
-                            class="img"
-                            src="img/hotel-room.jpg"
-                            onclick="changePreview(this.src)"
-                    />
+                    <?php
+                        echo '<img src="./uploads/'.$image.'" alt="Kép a szobáról" class="img" onclick="changePreview(this.src)" />';
+                    ?>
                 </div>
                 <div class="small-img-container">
                     <div class="small-img">
@@ -284,7 +282,7 @@ if (isset($_GET['error'])) {
                 echo "<div class='review'>";
                 echo "<div class='review-user'>";
                 echo "<div class='review-user-img'>";
-                echo "<img class='fullimg' src='$profilepic' />";
+                echo '<img class="fullimg" src="./uploads/'.$profilepic.'" alt="Profil kép" class="profile-img" />';
                 echo "</div>";
                 echo "<div class='review-user-name'>$fullname</div>";
                 echo "</div>";
