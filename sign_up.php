@@ -38,6 +38,12 @@
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
+        $sql = "SELECT * FROM users WHERE Email = '$email'";
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            header("Location: sign_up.php?error=emailtaken");
+            return;
+        }
         $sql = "INSERT INTO users (Email, LastNAME, FirstName, Password, RegDate) VALUES ('$email', '$lastname', '$firstname', '$hashedpassword', '$RegDate')";
         if ($conn->query($sql) === FALSE) {
             echo "Error: " . $sql . "<br>" . $conn->error;
@@ -55,6 +61,8 @@
           $errormsg = "Hibás email cím formátum!";
         } else if ($_GET["error"] == "emptyfields") {
           $errormsg = "Minden mezőt ki kell tölteni!";
+        } else if ($_GET["error"] == "emailtaken") {
+          $errormsg = "Ez az email cím már foglalt!";
         }
     }
   ?>
