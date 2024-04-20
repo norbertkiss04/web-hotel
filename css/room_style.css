@@ -119,8 +119,9 @@ section {
 }
 
 .room-reserving-btn {
-	background-color: #000;
-	color: white;
+	/* background-color: #000; */
+	/* color: white; */
+	border: 1px solid black;
 	padding: 16px 32px;
 	font-size: 18px;
 	font-weight: 600;
@@ -253,6 +254,7 @@ section {
 	padding: 8px 16px;
 	border-radius: 8px;
 	margin-top: 16px;
+	cursor: pointer;
 }
 
 .review-form-section {
@@ -273,4 +275,12 @@ section {
 
 .palegray {
 	color: gray;
+}
+
+.success-msg {
+	color: green;
+}
+
+.warning-msg {
+	color: red;
 }

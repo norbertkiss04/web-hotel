@@ -43,7 +43,7 @@
 
     //Get the bookings from the database
     // $sql = "SELECT rooms.Id, rooms.Name, rooms.RoomNumber, rooms.Price, rooms.Capacity, rooms.Wifi, rooms.Parking, rooms.AirConditioning FROM rooms INNER JOIN reservations ON reservations.UserId = '$myid' AND reservations.RoomId = rooms.Id";
-    $sql = "SELECT rooms.Id, rooms.Name, rooms.RoomNumber, rooms.Price, rooms.Capacity, rooms.Wifi, rooms.Balcony, rooms.AirConditioning, res.Id AS ResId, res.StartDate, res.EndDate FROM rooms INNER JOIN reservations AS res ON res.UserId = '$myid' AND res.RoomId = rooms.Id;";
+    $sql = "SELECT rooms.Id, rooms.Name, rooms.Price, rooms.Capacity, rooms.Wifi, rooms.Balcony, rooms.AirConditioning, res.Id AS ResId, res.StartDate, res.EndDate FROM rooms INNER JOIN reservations AS res ON res.UserId = '$myid' AND res.RoomId = rooms.Id;";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         $bookings = array();
@@ -73,6 +73,9 @@
             if (isset($_SESSION['id'])) {
                 echo '<a class="book-now-text" href="./reservation.php">FOGLALÁS</a>';
                 echo '<a class="my-account-text m-l-24" href="./profile.php">Profilom</a>';
+                if ($_SESSION['IsAdmin'] == 1) {
+                  echo '<a class="my-account-text" href="./adminpanel.php">AdminPanel</a>';
+              }
                 echo '<a class="my-account-text" href="./functions/sign_out.php">Kijelentkezés</a>';
             } else {
                 echo '<a class="my-account-text" href="./sign_in.php">Bejelentkezés</a>';
@@ -96,6 +99,9 @@
                     if (isset($_SESSION['id'])) {
                         echo '<a class="my-account-text" href="./profile.php">Profilom</a>';
                         echo '<a class="book-now-text" href="./reservation.php">FOGLALÁS</a>';
+                        if ($_SESSION['IsAdmin'] == 1) {
+                            echo '<a class="my-account-text" href="./adminpanel.php">Admin</a>';
+                        }
                         echo '<a class="my-account-text m-l-24" href="./functions/sign_out.php">Kijelentkezés</a>';
                     } else {
                         echo '<li><a href="./sign_in.php">Bejelentkezés</a></li>';
@@ -189,10 +195,10 @@
                 echo '<div class="room-details-section-title">Foglalás periódusa:</div>';
                 echo '<div class="room-details-section-value">'.formatDate($booking["StartDate"]). ' - ' .formatDate($booking["EndDate"]).'</div>';
                 echo '</div>';
-                echo '<div class="room-details-section">';
-                echo '<div class="room-details-section-title">Szoba száma:</div>';
-                echo '<div class="room-details-section-value">'.$booking["RoomNumber"].'</div>';
-                echo '</div>';
+                // echo '<div class="room-details-section">';
+                // echo '<div class="room-details-section-title">Szoba száma:</div>';
+                // echo '<div class="room-details-section-value">'.$booking["RoomNumber"].'</div>';
+                // echo '</div>';
                 echo '<div class="room-details-section">';
                 echo '<div class="room-details-section-title">Ár:</div>';
                 echo '<div class="room-details-section-value">'.formatPrice($booking["Price"]).' HUF / Éjszaka</div>';

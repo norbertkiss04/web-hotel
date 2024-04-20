@@ -9,6 +9,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
+<?php
+    if (isset($_GET['msg'])) {
+        if ($_GET['msg'] == 'success') {
+            $msg = 'Szoba sikeresen hozzáadva.';
+        }
+    }
+    if (isset($_GET['war'])) {
+        if ($_GET['war'] == 'emptyfields') {
+            $war = 'Minden mezőt ki kell tölteni!';
+        }
+    }
+?>
 <header>
     <div class="nav-container">
         <div class="logo">
@@ -66,11 +78,21 @@
     </div>
 </header>
 <section>
+    <?php
+    if (isset($msg)) {
+        echo '<div class="success-msg">' . $msg . '</div>';
+    }
+    if (isset($_GET['war'])) {
+        if ($_GET['war'] == 'emptyfields') {
+            echo '<div class="error-msg">Minden mezőt ki kell tölteni!</div>';
+        }
+    }
+    ?>
     <div class="section-title">Szobák hozzáadása</div>
     <form class="admin-panel-form" id="addRoomForm" method="post" action="./functions/add_room.php">
-        <input class="admin-panel-form-input" type="text" id="roomNumber" name="roomNumber" required placeholder="Szobaszám" />
-        <input class="admin-panel-form-input" type="number" id="capacity" name="capacity" required placeholder="Férőhely" />
-        <input class="admin-panel-form-input" type="number" id="price" name="price" min="0" required placeholder="Ár / Éjszaka" />
+        <input class="admin-panel-form-input" type="text" id="roomName" name="roomName" required placeholder="Szoba neve" />
+        <input class="admin-panel-form-input" type="number" id="capacity" min="0" max="5" name="capacity" required placeholder="Férőhely" />
+        <input class="admin-panel-form-input" type="number" id="price" name="price" required placeholder="Ár / Éjszaka" />
         <div class="admin-panel-spec-input">
             <input type="checkbox" id="freewifi" name="freewifi" value="FreeWifi" />
             <label for="freewifi">Ingyenes internet</label><br />
@@ -91,7 +113,7 @@
     <div class="overflow">
         <table>
             <tr>
-                <th>Szobaszám</th>
+                <th>Szobanév</th>
                 <th>Férőhelyek száma</th>
                 <th>Ár / Éjszaka</th>
                 <th>Internet</th>
@@ -111,13 +133,14 @@
             if ($result->num_rows > 0) {
                 while ($row = $result->fetch_assoc()) {
                     echo "<tr>";
-                    echo "<td>" . htmlspecialchars($row['RoomNumber']) . "</td>";
+                    echo "<td>" . htmlspecialchars($row['Name']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['Capacity']) . "</td>";
                     echo "<td>" . htmlspecialchars($row['Price']) . "</td>";
                     echo "<td>" . ($row['Wifi'] ? 'Igen' : 'Nincs') . "</td>";
                     echo "<td>" . ($row['Balcony'] ? 'Igen' : 'Nincs') . "</td>";
                     echo "<td>" . ($row['AirConditioning'] ? 'Igen' : 'Nincs') . "</td>";
-                    echo '<td><button onclick="deleteRoom(' . $row['RoomNumber'] . ')">Delete</button></td>';
+                    echo '<td><button onclick="">Delete</button></td>';
+                    // echo '<td><button onclick="deleteRoom(' . $row['RoomNumber'] . ')">Delete</button></td>';
                     echo "</tr>";
                 }
             } else {

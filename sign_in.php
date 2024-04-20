@@ -29,10 +29,12 @@
         $sql = "SELECT * FROM users WHERE Email='$email'";
         $result = $conn->query($sql);
         if ($result->num_rows > 0) {
-            $row = $result->fetch_assoc();
+          $row = $result->fetch_assoc();
+          echo $row["IsAdmin"];
             if (password_verify($password, $row["Password"])) {
                 session_start();
                 $_SESSION['id'] = $row["Id"];
+                $_SESSION['IsAdmin'] = $row["IsAdmin"] == 1 ? true : false;
                 header("Location: ./index.php");
             } else {
                 header("Location: ./sign_in.php?error=wrongpassword");

@@ -16,13 +16,13 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $roomname = $row['Name'];
-    $roomnumber = $row['RoomNumber'];
+    // $roomnumber = $row['RoomNumber'];
     $price = $row['Price'];
     $capacity = $row['Capacity'];
     $wifi = $row['Wifi'];
     $parking = $row['Balcony'];
     $ac = $row['AirConditioning'];
-    $image = $row['Image'];
+    // $image = $row['Image'];
 }
 
 $sql = "SELECT users.LastName, users.FirstName, users.ProfileImg, roomrating.Rating, roomrating.Text, roomrating.Date FROM roomrating INNER JOIN users ON users.Id = roomrating.UserId WHERE roomrating.RoomId = '$roomid' ORDER BY roomrating.Date DESC;";
@@ -37,7 +37,18 @@ $conn->close();
 
 if (isset($_GET['success'])) {
     if ($_GET['success'] == "reviewadded") {
-        $msg = "Sikeres hozzászólás!";
+        $reviewmsg = "Sikeres hozzászólás!";
+    }
+    if ($_GET['success'] == "booked") {
+        $msg = "Sikeres foglalás!";
+    }
+}
+if (isset($_GET['error'])) {
+    if ($_GET['error'] == "invaliddate") {
+        $warmsg = "Érvénytelen dátum!";
+    }
+    if ($_GET['error'] == "alreadybooked") {
+        $warmsg = "Már lefoglaltad ezt a szobát!";
     }
 }
 ?>
@@ -130,6 +141,14 @@ if (isset($_GET['success'])) {
     </div>
     <div class="room-container">
         <?php
+            if (isset($msg)) {
+                echo "<div class='success-msg'>$msg</div>";
+            }
+            if (isset($warmsg)) {
+                echo "<div class='warning-msg'>$warmsg</div>";
+            }
+        ?>
+        <?php
         echo "<div class='section-title'>$roomname</div>"
         ?>
         <div class="room-content">
@@ -167,12 +186,12 @@ if (isset($_GET['success'])) {
             </div>
             <div class="w-48p-r">
                 <div class="room-details">
-                    <div class="room-details-section">
+                    <!-- <div class="room-details-section">
                         <div class="room-details-section-title">Szoba száma:</div>
                         <?php
                         echo "<div class='room-details-section-value'>$roomnumber</div>"
                         ?>
-                    </div>
+                    </div> -->
                     <div class="room-details-section">
                         <div class="room-details-section-title">Ár:</div>
                         <?php
@@ -229,10 +248,11 @@ if (isset($_GET['success'])) {
                             <form action="./functions/book_room.php" method="POST">
                                 <input type="hidden" name="roomid" value="<?php echo $roomid;?>" />
                                 <input type="hidden" name="userid" value="<?php echo $myid;?>" />
-                                <label for="startdate">Kezdő dátum:</label>
-                                <input type="date" id="startdate" name="startdate" required />
-                                <label for="enddate">Vég dátum:</label>
-                                <input type="date" id="enddate" name="enddate" required />
+                                <label for="startdate">Érkezés dátum:</label>
+                                <input type="date" id="startdate" name="startdate" value="<?php echo date('Y-m-d'); ?>" required />
+                                <br >
+                                <label for="enddate">Távozás dátum:</label>
+                                <input type="date" id="enddate" name="enddate" value="<?php echo date('Y-m-d'); ?>" required />
                                 <input class="sendreview" type="submit" value="Foglalás" />
                             </form>
                         </div>
@@ -249,8 +269,8 @@ if (isset($_GET['success'])) {
         </div>
         <div class="reviews">
             <?php
-            if (isset($msg)) {
-                echo "<div class='success-msg'>$msg</div>";
+            if (isset($reviewmsg)) {
+                echo "<div class='success-msg'>$reviewmsg</div>";
             }
             if (count($reviews) == 0) {
                 echo "<div class='no-reviews'>Még nincsenek vélemények, légy te az első!</div>";
