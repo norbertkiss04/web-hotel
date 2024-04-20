@@ -1,21 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MDN Hotel</title>
-    <link rel="stylesheet" href="./css/global.css" />
-    <link rel="stylesheet" href="./css/homepage.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
+      <meta charset="UTF-8">
+      <meta name="viewport" content=
+      "width=device-width, initial-scale=1.0">
+      <title>MDN Hotel</title>
+      <link rel="stylesheet" href="./css/global.css">
+      <link rel="stylesheet" href="./css/homepage.css">
+      <link rel="stylesheet" href=
+      "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap">
+      <link rel="stylesheet" href=
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <script src="./js/global.js"></script>
+      <script src="./js/global.js">
+      </script>
   </head>
   <body>
     <header>
@@ -95,10 +93,10 @@
             <h1>Világa</h1>
           </div>
           <p>
-            Az MDN Hotel modern stílusával és fejlett technológiai
-            szolgáltatásaival a jelenkori utazók igényeit szolgálja ki. Elegáns,
-            kényelmes szobáinkkal és testreszabott vendégszolgáltatásainkkal
-            garantáljuk, hogy minden tartózkodás felejthetetlen élmény legyen.
+              Az MDN Hotel modern stílusával és fejlett technológiai
+              szolgáltatásaival a jelenkori utazók igényeit szolgálja ki. Elegáns,
+              kényelmes szobáinkkal és testreszabott vendégszolgáltatásainkkal
+              garantáljuk, hogy minden tartózkodás felejthetetlen élmény legyen.
           </p>
           <p>
             Az MDN Hotel ideális választás azok számára, akik modern
@@ -106,8 +104,7 @@
             üzleti vagy szabadidős utazásról. Kifinomult szállodánk az elegáns
             design és a legújabb technológiák harmonikus ötvözetével kínál
             kivételes szálláshelyet, ahol minden vendég igényeit magas
-            színvonalon elégítjük ki.
-          </p>
+            színvonalon elégítjük ki.</p>
         </div>
       </div>
       <div class="col2">
