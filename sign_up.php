@@ -53,7 +53,6 @@
         header("Location: sign_in.php?msg=success");
     }
 
-    $errormsg;
     if (isset($_GET["error"])) {
         if ($_GET["error"] == "minpasswordlength") {
           $errormsg = "A jelszónak legalább 8 karakter hosszúnak kell lennie!";
