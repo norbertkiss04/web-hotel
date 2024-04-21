@@ -1,26 +1,23 @@
 .nav-bar a{
-	color: #000
+    color: #000
 }
-
 .nav-bar .book-now-text{
-	color: #fff;
+    color: #fff;
 }
-
 section {
     margin: 64px 0;
     padding: 12px 64px;
     width: 100%;
     box-sizing: border-box;
     display: flex;
-    justify-content: center;;
+    justify-content: center;
+;
 }
-
 .section-title {
     font-size: 1.6rem;
     font-weight: 600;
     margin-bottom: 24px;
 }
-
 .gallery-container {
     max-width: 80%;
     padding: 8px;
@@ -29,20 +26,16 @@ section {
     border: 1px solid #ccc;
     border-radius: 8px;
 }
-
 .gallery {
     display: flex;
     width: 100%;
     height: 500px;
 }
-
-
 .img {
     width: 100%;
     object-fit: cover;
     height: 100%;
 }
-
 .gallery-small {
     max-width: 100%;
     padding: 8px 0;
@@ -52,21 +45,17 @@ section {
     overflow: scroll;
     white-space: nowrap;
 }
-
 .gallery-small::-webkit-scrollbar {
     display: flex;
 }
-
 .gallery-small-img {
     display: inline-block;
     min-width: 200px;
     height: 100px;
     cursor: pointer;
 }
-
 @media screen and (max-width: 768px) {
     .gallery-container {
         max-width: 100%;
     }
-    
 }

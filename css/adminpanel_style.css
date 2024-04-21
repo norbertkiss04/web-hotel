@@ -1,31 +1,25 @@
-
 .nav-bar a{
-	color: #000
+    color: #000
 }
-
 .nav-bar .book-now-text{
-	color: #fff;
+    color: #fff;
 }
-
 section {
     margin: 160px 0 64px;
     padding: 24px 64px;
     width: 100%;
     box-sizing: border-box;
-	display: flex;
+    display: flex;
     flex-direction: column;
-	justify-content: center;
+    justify-content: center;
 }
-
 .section-title {
     font-size: 1.6rem;
     font-weight: 600;
-	margin-bottom: 32px;
+    margin-bottom: 32px;
     text-decoration: underline;
     text-align: center;
 }
-
-
 .admin-panel-form {
     display: flex;
     flex-direction: column;
@@ -33,7 +27,6 @@ section {
     width: 50%;
     margin: 0 auto;
 }
-
 .admin-panel-form-input {
     margin-bottom: 10px;
     padding: 10px;
@@ -42,12 +35,10 @@ section {
     border-radius: 5px;
     width: 100%;
 }
-
 .admin-panel-spec-input {
     display: flex;
     gap: 10px;
 }
-
 .input-form-btn {
     width: 100%;
     padding: 10px;
@@ -58,42 +49,34 @@ section {
     background-color: #000;
     transition: 0.5s;
 }
-
 h1 {
     text-align: center;
     margin-bottom: 20px;
 }
-
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: 20px;
 }
-
 th, td {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
-
 th {
     background-color: #f2f2f2;
     font-weight: bold;
     text-transform: uppercase;
 }
-
 tr:nth-child(even) {
     background-color: #f9f9f9;
 }
-
 tr:hover {
     background-color: #f2f2f2;
 }
-
 td:last-child {
     text-align: center;
 }
-
 button {
     padding: 8px 16px;
     background-color: #dc3545;
@@ -103,11 +86,9 @@ button {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-
 button:hover {
     background-color: #bd2130;
 }
-
 .checkmark {
     display: inline-block;
     width: 20px;
@@ -118,20 +99,15 @@ button:hover {
     vertical-align: middle;
     margin-right: 5px;
 }
-
 .included {
     background-color: #28a745;
 }
-
 .not-included {
     background-color: #dc3545;
 }
-
-
 .overflow {
     overflow: auto;
 }
-
 @media screen and (max-width: 768px) {
     section {
         padding: 12px 24px;
@@ -140,7 +116,6 @@ button:hover {
         width: 90%;
     }
 }
-
 @media screen and (max-width: 425px) {
     section {
         padding: 12px 12px;
@@ -149,28 +124,23 @@ button:hover {
         width: 100%;
     }
 }
-
 .success-msg {
     color: #28a745;
     text-align: center;
     margin-bottom: 20px;
 }
-
 .error-msg {
     color: #dc3545;
     text-align: center;
     margin-bottom: 20px;
 }
-
 .editroom {
     background-color: #179ed4;
     margin-right: 12px;
 }
-
 .editroom:hover {
     background-color: #0f6d8f;
 }
-
 .admin-panel-from-subtitle {
     font-size: 16px;
     color: #000;

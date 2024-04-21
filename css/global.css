@@ -2,29 +2,20 @@
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: 100%;
   font: inherit;
   vertical-align: baseline;
 }
-
 body {
   background-color: #fff;
   font-family: "Poppins", sans-serif;
 }
-
-ol,
-ul {
+ol, ul {
   list-style: none;
 }
-
 .nav-container {
   display: flex;
 }
-
 .nav-bar {
-  /* position: absolute;
-  top: 0;
-  right: 0; */
   width: 74%;
   z-index: 10;
   display: flex;
@@ -35,12 +26,8 @@ ul {
   padding: 36px 0;
   margin: 0 20px;
 }
-
 .logo {
-  /* top: 0; */
-  /* left: 0; */
   z-index: 10;
-  /* position: absolute; */
   font-size: 24px;
   background-color: #000;
   padding: 40px;
@@ -53,27 +40,22 @@ ul {
   color: white;
   margin-left: 80px;
 }
-
 .logo .x {
   font-weight: 600;
 }
-
 nav ul {
   display: flex;
   gap: 20px;
 }
-
 nav a {
   text-decoration: none;
   color: #fff;
   font-size: 20px;
   font-weight: 600;
 }
-
 nav a:hover{
   color: #acacac;
 }
-
 .my-account-text {
   text-decoration: none;
   color: #fff;
@@ -81,11 +63,9 @@ nav a:hover{
   font-weight: 600;
   margin-right: 24px;
 }
-
 .my-account-text:hover{
   color: #acacac;
 }
-
 .book-now-text {
   color: white;
   background-color: #000;
@@ -94,11 +74,9 @@ nav a:hover{
   font-weight: 600;
   text-decoration: none;
 }
-
 .book-now-text:hover{
   color: #acacac;
 }
-
 footer {
   background-color: #12171b;
   color: white;
@@ -108,9 +86,7 @@ footer {
   align-items: center;
   margin-top: 170px;
 }
-
-.footer-left,
-.footer-right {
+.footer-left, .footer-right {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -118,56 +94,44 @@ footer {
   gap: 8px;
   margin: 0;
 }
-
 .contact-info {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: left;
   gap: 6px;
 }
-
-.contact-info p,
-.awards p {
+.contact-info p, .awards p {
   margin: 0;
   line-height: 1.5;
 }
-
 .social-media {
   display: flex;
   justify-content: space-between;
   gap: 12px;
 }
-
 .social-media a {
   color: white;
   font-size: 24px;
   margin: 0 10px;
 }
-
 .social-media a:hover {
   color: #007bff;
   transition: 0.3s;
 }
-
 @media (max-width: 600px) {
   footer {
     flex-direction: column;
     text-align: center;
   }
-
-  .footer-left,
-  .footer-right {
+  .footer-left, .footer-right {
     width: 100%;
     margin-bottom: 20px;
   }
-
   .social-media a {
     font-size: 20px;
     margin: 0 5px;
   }
 }
-
 @media (max-width: 1024px) {
   .nav-bar {
     width: 100%;
@@ -175,21 +139,18 @@ footer {
   .logo {
     margin-left: 8px;
   }
-
 }
-
 .hamburger-menu {
   display: none;
   position: absolute;
-  left: 0px;
-  top: 0px;
+  left: 0;
+  top: 0;
   background-color: #fff;
   width: 100%;
   height: 100vh;
   padding: 32px;
   box-sizing: border-box;
 }
-
 .nav-mobile>ul {
   display: flex;
   flex-direction: column;
@@ -197,15 +158,12 @@ footer {
   align-items: center;
   gap: 16px;
 }
-
 .hamburger-menu-close-icon {
   position: absolute;
   right: 16px;
   top: 16px;
   font-size: 32px;
-
 }
-
 .hamburger-menu-icon {
   display: none;
   position: absolute;
@@ -213,7 +171,6 @@ footer {
   top: 16px;
   font-size: 32px;
 }
-
 @media (max-width: 768px) {
   .hamburger-menu-icon {
     display: flex;
@@ -225,17 +182,15 @@ footer {
     display: none;
   }
   .logo {
-
   }
   .nav-container {
     justify-content: center;
     align-items: center;
   }
   .nav-bar {
-    width: 0px;
+    width: 0;
   }
 }
-
 .m-l-24 {
   margin-left: 24px;
 }

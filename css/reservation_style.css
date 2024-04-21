@@ -5,40 +5,34 @@
     --container-bg-color: #ffffff;
     --border-color: #ddd;
 }
-
 .up{
-	margin-top: 160px;
+    margin-top: 160px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .filter {
     display: flex;
     align-items: center;
     gap: 10px;
     font-family: Arial, sans-serif;
-  }
-  
-  .filter-label {
+}
+.filter-label {
     font-weight: bold;
     margin-right: 10px;
-  }
-  
-  .custom-checkbox {
+}
+.custom-checkbox {
     position: relative;
     padding-left: 25px;
     cursor: pointer;
     user-select: none;
-  }
-  
-  .custom-checkbox input {
+}
+.custom-checkbox input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
-  }
-  
-  .checkmark {
+}
+.checkmark {
     position: absolute;
     top: 0;
     left: 0;
@@ -46,27 +40,22 @@
     width: 20px;
     background-color: #eee;
     border-radius: 4px;
-  }
-  
-  .custom-checkbox:hover input ~ .checkmark {
+}
+.custom-checkbox:hover input ~ .checkmark {
     background-color: #ccc;
-  }
-  
-  .custom-checkbox input:checked ~ .checkmark {
+}
+.custom-checkbox input:checked ~ .checkmark {
     background-color: #2196F3;
-  }
-  
-  .checkmark:after {
+}
+.checkmark:after {
     content: "";
     position: absolute;
     display: none;
-  }
-  
-  .custom-checkbox input:checked ~ .checkmark:after {
+}
+.custom-checkbox input:checked ~ .checkmark:after {
     display: block;
-  }
-  
-  .custom-checkbox .checkmark:after {
+}
+.custom-checkbox .checkmark:after {
     left: 7px;
     top: 3px;
     width: 5px;
@@ -74,53 +63,43 @@
     border: solid white;
     border-width: 0 3px 3px 0;
     transform: rotate(45deg);
-  }
-  
-  .input-field, select {
+}
+.input-field, select {
     padding: 5px;
     margin-left: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-  }
-  
-  .icon {
+}
+.icon {
     margin-right: 5px;
-  }
-
+}
 .up div{
     max-width: 920px;
 }
-
 .up div h1{
     font-weight: 600;
     font-size: 48px;
 }
-
 .nav-bar a{
-	color: #000
+    color: #000
 }
-
 .nav-bar .book-now-text{
-	color: #fff;
+    color: #fff;
 }
-
 .room-section {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .rooms {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     padding: 20px;
     margin: 0 auto;
     max-width: 960px;
 }
-
-
 .room-card {
     background-color: #ffffff;
     border-radius: 10px;
@@ -129,11 +108,9 @@
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
 }
-
 .room-card:hover {
     transform: translateY(-5px);
 }
-
 .room-image {
     width: 100%;
     height: 200px;
@@ -141,7 +118,6 @@
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
 }
-
 .room-info {
     padding: 15px;
     display: flex;
@@ -149,13 +125,11 @@
     flex-direction: column;
     height: 200px;
 }
-
 .room-title {
     margin: 10px 0 5px;
     font-size: 1.5em;
     color: #333;
 }
-
 .room-amenities {
     list-style: none;
     padding: 0;
@@ -163,30 +137,24 @@
     color: #555;
     font-size: 0.9em;
 }
-
 .room-amenities span {
     display: block;
     margin-bottom: 5px;
 }
-
 .room-amenities i {
     color: #007bff;
     margin-right: 8px;
 }
-
-.room-capacity,
-.room-price {
+.room-capacity, .room-price {
     margin: 5px 0;
     font-size: 1em;
     color: #444;
 }
-
 .room-price {
     font-weight: bold;
     color: #000;
     font-size: 1.1em;
 }
-
 .submit-btn{
     background-color: #007bff;
     color: #fff;
@@ -196,34 +164,25 @@
     cursor: pointer;
     font-size: 1em;
 }
-
 @media(max-width: 1000px){
-  .filter{
-    flex-wrap: wrap;
-    padding: 10px 32px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  h1{
-    padding: 0 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .rooms{
-    justify-content: center;
-  }
-}
-
-@media (max-width: 767px) {
-    .room-section {
-        grid-template-columns: 1fr;
+    .filter{
+        flex-wrap: wrap;
+        padding: 10px 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    h1{
+        padding: 0 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .rooms{
+        justify-content: center;
     }
 }
 
 .rooms>a {
-  text-decoration: none;
+    text-decoration: none;
 }
