@@ -152,7 +152,7 @@ session_start();
         <div class="rooms">
             <?php foreach($rooms as $room) { ?>
                 <a class="room-card" href="room.php?id=<?= $room['Id'] ?>">
-                    <img src="./img/hotel-room.jpg" alt="<?= htmlspecialchars($room["Name"]) ?>" class="room-image">
+                    <img src="./uploads/<?= $room['Image'] ?>" alt="<?= htmlspecialchars($room["Name"]) ?>" class="room-image" />
                     <div class="room-info">
                         <h2 class="room-title"><?= htmlspecialchars($room["Name"]) ?></h2>
                         <div class="room-amenities">

@@ -12,6 +12,15 @@ session_start();
         exit();
     }
     $roomId = $_GET['roomId'];
+    $sql = "SELECT * FROM rooms WHERE Id='$roomId'";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
+        $image = $row['Image'];
+    }
+    if ($image != "DefaultRoomImg.png") {
+        unlink("./../uploads/".$image);
+    }
 
     $query = "DELETE FROM reservations WHERE RoomId = '$roomId'";
     if ($conn->query($query) === FALSE) {
