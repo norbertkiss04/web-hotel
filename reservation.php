@@ -1,13 +1,18 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/global.css" />
-    <link rel="stylesheet" href="./css/reservation_style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/reservation_style.css">
+    <link rel="stylesheet" href=
+    "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="./js/global.js"></script>
 </head>
 <body>
@@ -64,7 +69,6 @@
         </nav>
         <div class="book-now">
         <?php
-                session_start();
                 if (isset($_SESSION['id'])) {
                     echo '<a class="book-now-text" href="./reservation.php">FOGLALÁS</a>';
                     echo '<a class="my-account-text m-l-24" href="./profile.php">Profilom</a>';
@@ -76,11 +80,11 @@
             ?>
         </div>
         <div class="hamburger-menu-icon" onclick="showHamburgerMenu()">
-          <i class="fa-solid fa-bars"></i>
+          <i class="fa-solid fa-bars" aria-hidden="true">&nbsp;</i>
         </div>
         <div class="hamburger-menu" id="hamburger-menu">
           <div class="hamburger-menu-close-icon" onclick="hideHamburgerMenu()">
-            <i class="fa-solid fa-times"></i>
+            <i class="fa-solid fa-times" aria-hidden="true">&nbsp;</i>
           </div>
           <nav class="nav-mobile">
             <ul>
@@ -88,7 +92,6 @@
               <li><a href="./reservation.php">Szobáink</a></li>
               <li><a href="./gallery.php">Galéria</a></li>
               <?php
-                    session_start();
                     if (isset($_SESSION['id'])) {
                         echo '<li><a href="./profile.php">Profilom</a></li>';
                         echo '<li><a href="./reservation.php">Foglalás</a></li>';
@@ -111,22 +114,22 @@
                 <div class="filter">
                     <span class="filter-label">Filterek:</span>
                     <label class="custom-checkbox">
-                        <i class="fas fa-wifi icon"></i>WiFi
-                        <input type="checkbox" name="wifi" value="1" <?= isset($_GET['wifi']) ? 'checked' : '' ?>/>
-                        <span class="checkmark"></span>
+                        <i class="fas fa-wifi icon" aria-hidden="true">&nbsp;</i>WiFi
+                        <input type="checkbox" name="wifi" value="1" <?= isset($_GET['wifi']) ? 'checked' : '' ?>>
+                        <span class="checkmark">&nbsp;</span>
                     </label>
                     <label class="custom-checkbox">
-                        <i class="fas fa-door-open icon"></i>Terasz
-                        <input type="checkbox" name="balcony" value="1" <?= isset($_GET['balcony']) ? 'checked' : '' ?>/>
-                        <span class="checkmark"></span>
+                        <i class="fas fa-door-open icon" aria-hidden="true">&nbsp;</i>Terasz
+                        <input type="checkbox" name="balcony" value="1" <?= isset($_GET['balcony']) ? 'checked' : '' ?>>
+                        <span class="checkmark">&nbsp;</span>
                     </label>
                     <label class="custom-checkbox">
-                        <i class="fas fa-snowflake icon"></i>Légkondícionáló
-                        <input type="checkbox" name="ac" value="1" <?= isset($_GET['ac']) ? 'checked' : '' ?>/>
-                        <span class="checkmark"></span>
+                        <i class="fas fa-snowflake icon" aria-hidden="true">&nbsp;</i>Légkondícionáló
+                        <input type="checkbox" name="ac" value="1" <?= isset($_GET['ac']) ? 'checked' : '' ?>>
+                        <span class="checkmark">&nbsp;</span>
                     </label>
                     <label>
-                        <i class="fas fa-users icon"></i>
+                        <i class="fas fa-users icon" aria-hidden="true">&nbsp;</i>
                         <select name="people">
                             <option value="">Mindenki</option>
                             <option value="1" <?= isset($_GET['people']) && $_GET['people'] === '1' ? 'selected' : '' ?>>1 Személy</option>
@@ -136,8 +139,8 @@
                         </select>
                     </label>
                     <label>
-                        <i class="fas fa-dollar-sign icon"></i>Maximlis ár
-                        <input type="number" class="input-field" name="price" min="0" value="<?= $_GET['price'] ?? '' ?>"/>
+                        <i class="fas fa-dollar-sign icon" aria-hidden="true">&nbsp;</i>Maximlis ár
+                        <input type="number" class="input-field" name="price" min="0" value="<?= $_GET['price'] ?? '' ?>">
                     </label>
                     <button type="submit" class="submit-btn">Keresés</button>
                 </div>
@@ -149,19 +152,19 @@
         <div class="rooms">
             <?php foreach($rooms as $room) { ?>
                 <a class="room-card" href="room.php?id=<?= $room['Id'] ?>">
-                    <img src="./img/hotel-room.jpg" alt="<?= htmlspecialchars($room["Name"]) ?>" class="room-image" />
+                    <img src="./img/hotel-room.jpg" alt="<?= htmlspecialchars($room["Name"]) ?>" class="room-image">
                     <div class="room-info">
                         <h2 class="room-title"><?= htmlspecialchars($room["Name"]) ?></h2>
                         <div class="room-amenities">
                             <?php
                                 if ($room["Wifi"]) {
-                                    echo '<span><i class="fas fa-wifi"></i> WiFi</span>';
+                                    echo '<span><i class="fas fa-wifi" aria-hidden="true">&nbsp;</i> WiFi</span>';
                                 }
                                 if ($room["Balcony"]) {
-                                    echo '<span><i class="fas fa-door-open"></i> Terasz</span>';
+                                    echo '<span><i class="fas fa-door-open" aria-hidden="true">&nbsp;</i> Terasz</span>';
                                 }
                                 if ($room["AirConditioning"]) {
-                                    echo '<span><i class="fas fa-temperature-low"></i> Légkondícionáló</span>';
+                                    echo '<span><i class="fas fa-temperature-low" aria-hidden="true">&nbsp;</i> Légkondícionáló</span>';
                                 }
                             ?>
                         </div>
@@ -187,13 +190,13 @@
       <div class="footer-right">
         <div class="social-media">
           <a href="http://facebook.com/mdnhotel"
-            ><i class="fab fa-facebook-f"></i
+            ><i class="fab fa-facebook-f" aria-hidden="true">&nbsp;</i
           ></a>
           <a href="http://twitter.com/mdnhotel"
-            ><i class="fab fa-twitter"></i
+            ><i class="fab fa-twitter" aria-hidden="true">&nbsp;</i
           ></a>
           <a href="http://instagram.com/mdnhotel"
-            ><i class="fab fa-instagram"></i
+            ><i class="fab fa-instagram" aria-hidden="true">&nbsp;</i
           ></a>
         </div>
         <div class="awards">
