@@ -10,6 +10,9 @@ if ($conn->connect_error) {
     die("Connection failed: ". $conn->connect_error);
 }
 
+if ($userid == 0) {
+    header("Location:./../sign_in.php?error=notloggedin");
+}
 if ($startdate >= $enddate) {
     header("Location:./../room.php?id=$roomid&error=invaliddate");
     exit();
