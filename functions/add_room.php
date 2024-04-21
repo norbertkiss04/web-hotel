@@ -1,59 +1,80 @@
 <?php
-    session_start();
-    $conn = new mysqli("localhost", "root", "", "mdnhotel");
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
+session_start();
+$conn = connectToDatabase();
 
-    if (!isset($_POST['roomName'])) {
-        echo "Room name is NOT set.";
-    }
-    //
-    $roomName = $_POST['roomName'];
-    $capacity = $_POST['capacity'];
-    $price = $_POST['price'];
-    $wifi = isset($_POST['wifi']) ? 1 : 0;
-    $balcony = isset($_POST['balcony']) ? 1 : 0;
-    $ac = isset($_POST['ac']) ? 1 : 0;
+// Check if required POST data is available
+if (!isset($_POST['roomName'], $_POST['capacity'], $_POST['price'])) {
+    redirectTo('../adminpanel.php?war=emptyfields');
+}
+
+$roomName = trim($_POST['roomName']);
+$capacity = trim($_POST['capacity']);
+$price = trim($_POST['price']);
+$wifi = isset($_POST['wifi']);
+$balcony = isset($_POST['balcony']);
+$ac = isset($_POST['ac']);
+
+// Validate non-empty values
+if (empty($roomName) || empty($capacity) || empty($price)) {
+    redirectTo('../adminpanel.php?war=emptyfields');
+}
+
+// Check if the room name already exists
+if (checkRoomExists($roomName)) {
+    redirectTo('../adminpanel.php?war=nametaken');
+}
+
+// Handle image upload
+if (isset($_FILES['roompic'])) {
     $img = $_FILES['roompic'];
+    if ($img['error']!= UPLOAD_ERR_OK) {
+        redirectTo('../adminpanel.php?war=emptyfields');
+    }
 
-    if (!isset($roomName) || trim($roomName) === "" || !isset($capacity) || trim($capacity) === "" || !isset($price) || trim($price) === "") {
-        header('Location: ../adminpanel.php?war=emptyfields');
+    $target_dir = "./../uploads/";
+    $target_file = $target_dir. basename($img["name"]);
+    if (!is_uploaded_file($img["tmp_name"]) ||!getimagesize($img["tmp_name"])) {
+        redirectTo('../adminpanel.php?war=invalidimage');
+    }
+
+    if (!move_uploaded_file($img["tmp_name"], $target_file)) {
+        redirectTo('../profile.php?err=unexpectederr');
+    }
+
+    $name = $img["name"];
+    $query = "INSERT INTO rooms (Name, Capacity, Price, Wifi, Balcony, AirConditioning, Image) VALUES ('$roomName', '$capacity', '$price', '$wifi', '$balcony', '$ac', '$name')";
+    if ($conn->query($query) === FALSE) {
+        echo "Error: ". $query. "<br>". $conn->error;
         return;
     }
-    
-    if (!isset($img)) {
-        echo "Image is NOT set.";
-        header('Location: ../adminpanel.php?war=emptyfields');
-    }
+    redirectTo('../adminpanel.php?msg=success');
+} else {
+    redirectTo('../adminpanel.php?war=emptyfields');
+}
 
-    if ($img['error'] == UPLOAD_ERR_OK) {
-        $target_dir = "./../uploads/";
-        $target_file = $target_dir . basename($img["name"]);
-        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-        $check = getimagesize($img["tmp_name"]);
-        if($check !== false) {
-            echo "File is an image - " . $check["mime"] . ".";
-        } else {
-            echo "File is not an image.";
-        }
-        if (move_uploaded_file($img["tmp_name"], $target_file)) {
-            $name = $img["name"];
-            $query = "INSERT INTO rooms (Name, Capacity, Price, Wifi, Balcony, AirConditioning, Image) VALUES ('$roomName', '$capacity', '$price', '$wifi', '$balcony', '$ac', '$name')";
-            if ($conn->query($query) === FALSE) {
-                echo "Error: " . $query . "<br>" . $conn->error;
-                return;
-            }
-            echo "Room added successfully.";
-            header('Location: ../adminpanel.php?msg=success');
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-            header('Location: ./../profile.php?err=unexpectederr');
-        }
-    } else {
-        echo "Error uploading file.";
-        header('Location: ../adminpanel.php?war=emptyfields');
+$conn->close();
+exit();
+
+function connectToDatabase() {
+    $conn = new mysqli("localhost", "root", "", "mdnhotel");
+    if ($conn->connect_error) {
+        die("Connection failed: ". $conn->connect_error);
     }
-    $conn->close();
+    return $conn;
+}
+
+function redirectTo($url) {
+    header('Location: '. $url);
     exit();
-?>
+}
+
+function checkRoomExists($roomName) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT COUNT(*) FROM rooms WHERE Name =?");
+    $stmt->bind_param("s", $roomName);
+    $stmt->execute();
+    $stmt->bind_result($count);
+    $stmt->fetch();
+    $stmt->close();
+    return $count > 0;
+}

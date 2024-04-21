@@ -61,7 +61,7 @@
     <form class="admin-panel-form" id="editRoomForm" method="post" action="./functions/edit_room.php" enctype="multipart/form-data">
         <input type="hidden" name="roomId" value="<?php echo $roomid ?>">
         <label class="admin-panel-from-subtitle">Neve: </label>
-        <input class="admin-panel-form-input" type="text" id="roomName" value="<?php echo $roomname ?>" name="roomName" required placeholder="Szoba neve">
+        <input class="admin-panel-form-input" type="text" id="roomName" value="<?php echo $roomname ?>" name="roomName" required placeholder="Szoba neve" disabled>
         <label class="admin-panel-from-subtitle">Férőhelyek száma: </label>
         <input class="admin-panel-form-input" type="number" id="capacity" value="<?php echo $capacity ?>" min="0" max="5" name="capacity" required placeholder="Férőhely">
         <label class="admin-panel-from-subtitle">Ára: </label>

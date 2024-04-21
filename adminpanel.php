@@ -28,6 +28,9 @@ session_start();
         if ($_GET['war'] == 'emptyfields') {
             $war = 'Minden mezőt ki kell tölteni!';
         }
+        if ($_GET['war'] == 'nametaken') {
+            $war = 'Már van ilyen nevű szoba';
+        }
     }
 ?>
 <header>
@@ -90,10 +93,8 @@ session_start();
     if (isset($msg)) {
         echo '<div class="success-msg">' . $msg . '</div>';
     }
-    if (isset($_GET['war'])) {
-        if ($_GET['war'] == 'emptyfields') {
-            echo '<div class="error-msg">Minden mezőt ki kell tölteni!</div>';
-        }
+    if (isset($war)) {
+        echo '<div class="error-msg">' . $war . '</div>';
     }
     ?>
     <div class="section-title">Szobák hozzáadása</div>
