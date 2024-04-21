@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/sign_in_style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/sign_in_style.css">
     <title>Regisztáció</title>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
+      <link rel="stylesheet" href=
+      "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap">
   </head>
   <?php
     session_start();
@@ -80,7 +78,7 @@
               id="email"
               name="email"
               placeholder="Email cím"
-            />
+            >
           </div>
           <div class="input-container">
             <input
@@ -88,7 +86,7 @@
               id="lastname"
               name="lastname"
               placeholder="Név"
-            />
+            >
           </div>
           <div class="input-container">
             <input
@@ -96,7 +94,7 @@
               id="firstname"
               name="firstname"
               placeholder="Vezetéknév"
-            />
+            >
           </div>
           <div class="input-container">
             <input
@@ -104,10 +102,10 @@
               id="password"
               name="password"
               placeholder="Jelszó (Min. 8 karakter)"
-            />
+            >
           </div>
           <div class="input-container">
-            <input class="input-form-btn" type="submit" value="Regisztráció" />
+            <input class="input-form-btn" type="submit" value="Regisztráció">
           </div>
           <?php
             if (isset($errormsg)) {
