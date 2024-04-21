@@ -16,7 +16,6 @@ $result = $conn->query($sql);
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $roomname = $row['Name'];
-    // $roomnumber = $row['RoomNumber'];
     $price = $row['Price'];
     $capacity = $row['Capacity'];
     $wifi = $row['Wifi'];

@@ -23,7 +23,6 @@
     }
     $myid = $_SESSION['id'];
 
-    //Get the user data from the database
     $conn = new mysqli("localhost", "root", "", "mdnhotel");
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
@@ -39,8 +38,6 @@
         $profilepic = $row["ProfileImg"];
     }
 
-    //Get the bookings from the database
-    // $sql = "SELECT rooms.Id, rooms.Name, rooms.RoomNumber, rooms.Price, rooms.Capacity, rooms.Wifi, rooms.Parking, rooms.AirConditioning FROM rooms INNER JOIN reservations ON reservations.UserId = '$myid' AND reservations.RoomId = rooms.Id";
     $sql = "SELECT rooms.Id, rooms.Name, rooms.Price, rooms.Capacity, rooms.Wifi, rooms.Balcony, rooms.AirConditioning, res.Id AS ResId, res.StartDate, res.EndDate FROM rooms INNER JOIN reservations AS res ON res.UserId = '$myid' AND res.RoomId = rooms.Id;";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {

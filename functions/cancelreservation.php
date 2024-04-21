@@ -22,26 +22,4 @@
         $conn->close();
         header("Location: ./../profile.php");
     }
-    // if (!isset($_SESSION['id'])) {
-    //     header("Location: ./sign_in.php");
-    //     return;
-    // }
-    // if (!isset($_GET["roomid"])) {
-    //     header("Location: ./index.php");
-    //     return;
-    // }
-    // $roomid = $_GET["roomid"];
-    // $userid = $_SESSION['id'];
-    // echo "Room ID: $roomid, User ID: $userid";
-    // $conn = new mysqli("localhost", "root", "", "mdnhotel");
-    // if ($conn->connect_error) {
-    //     die("Connection failed: " . $conn->connect_error);
-    // }
-    // $sql = "DELETE FROM reservations WHERE Id='$roomid' AND UserId='$userid'";
-    // if ($conn->query($sql) === FALSE) {
-    //     echo "Error: " . $sql . "<br>" . $conn->error;
-    //     return;
-    // }
-    // $conn->close();
-    // header("Location: ./profile.php");
 ?>

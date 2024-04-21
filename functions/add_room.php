@@ -2,7 +2,6 @@
 session_start();
 $conn = connectToDatabase();
 
-// Check if required POST data is available
 if (!isset($_POST['roomName'], $_POST['capacity'], $_POST['price'])) {
     redirectTo('../adminpanel.php?war=emptyfields');
 }
@@ -14,17 +13,14 @@ $wifi = isset($_POST['wifi']);
 $balcony = isset($_POST['balcony']);
 $ac = isset($_POST['ac']);
 
-// Validate non-empty values
 if (empty($roomName) || empty($capacity) || empty($price)) {
     redirectTo('../adminpanel.php?war=emptyfields');
 }
 
-// Check if the room name already exists
 if (checkRoomExists($roomName)) {
     redirectTo('../adminpanel.php?war=nametaken');
 }
 
-// Handle image upload
 if (isset($_FILES['roompic'])) {
     $img = $_FILES['roompic'];
     if ($img['error']!= UPLOAD_ERR_OK) {
