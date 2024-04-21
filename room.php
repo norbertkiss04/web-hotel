@@ -56,12 +56,13 @@ if (isset($_GET['error'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/global.css" />
-    <link rel="stylesheet" href="./css/room_style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/room_style.css">
     <script src="https://kit.fontawesome.com/e8a7f12e99.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href=
+    "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap">
     <title>Hotel szoba</title>
     <script src="./js/global.js"></script>
     <script>
@@ -103,11 +104,11 @@ if (isset($_GET['error'])) {
                 ?>
             </div>
             <div class="hamburger-menu-icon" onclick="showHamburgerMenu()">
-                <i class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-bars">&nbsp;</i>
             </div>
             <div class="hamburger-menu" id="hamburger-menu">
                 <div class="hamburger-menu-close-icon" onclick="hideHamburgerMenu()">
-                    <i class="fa-solid fa-times"></i>
+                    <i class="fa-solid fa-times">&nbsp;</i>
                 </div>
                 <nav class="nav-mobile">
                     <ul>
@@ -131,12 +132,13 @@ if (isset($_GET['error'])) {
     </div>
 </header>
 <section>
+    <h1>&nbsp;</h1>
     <div id="room-img-preview" class="room-img-preview">
         <div class="room-img-preview-close" onclick="closePreview()">
-            <i class="fa-solid fa-xmark" style="color: #ffffff"></i>
+            <i class="fa-solid fa-xmark" style="color: #ffffff">&nbsp;</i>
         </div>
         <div class="room-img-preview-img">
-            <img id="room-img" style="width: 100%" src="img/hotel-room.jpg" />
+            <img id="room-img" style="width: 100%" alt="Fo szoba kep" src="img/hotel-room.jpg">
         </div>
     </div>
     <div class="room-container">
@@ -155,41 +157,12 @@ if (isset($_GET['error'])) {
             <div class="w-48p-l">
                 <div class="large-img">
                     <?php
-                        echo '<img src="./uploads/'.$image.'" alt="Kép a szobáról" class="img" onclick="changePreview(this.src)" />';
+                        echo '<img src="./uploads/'.$image.'" alt="Kép a szobáról" class="img" onclick="changePreview(this.src)">';
                     ?>
-                </div>
-                <div class="small-img-container">
-                    <div class="small-img">
-                        <img
-                                class="img"
-                                src="img/hotel-room.jpg"
-                                onclick="changePreview(this.src)"
-                        />
-                    </div>
-                    <div class="small-img">
-                        <img
-                                class="img"
-                                src="img/hotel-room.jpg"
-                                onclick="changePreview(this.src)"
-                        />
-                    </div>
-                    <div class="small-img">
-                        <img
-                                class="img"
-                                src="img/hotel-room.jpg"
-                                onclick="changePreview(this.src)"
-                        />
-                    </div>
                 </div>
             </div>
             <div class="w-48p-r">
                 <div class="room-details">
-                    <!-- <div class="room-details-section">
-                        <div class="room-details-section-title">Szoba száma:</div>
-                        <?php
-                        echo "<div class='room-details-section-value'>$roomnumber</div>"
-                        ?>
-                    </div> -->
                     <div class="room-details-section">
                         <div class="room-details-section-title">Ár:</div>
                         <?php
@@ -206,7 +179,7 @@ if (isset($_GET['error'])) {
                         <div class="room-details-section-title">Egyéb</div>
                         <div class="room-details-section-value-other">
                             <div class="d-f-j-c-a-c">
-                                <i class="fa-solid fa-wifi"></i>
+                                <i class="fa-solid fa-wifi">&nbsp;</i>
                             </div>
                             <?php
                             if ($wifi == 1) {
@@ -218,7 +191,7 @@ if (isset($_GET['error'])) {
                         </div>
                         <div class="room-details-section-value-other">
                             <div class="d-f-j-c-a-c">
-                                <i class="fas fa-door-open"></i>
+                                <i class="fas fa-door-open">&nbsp;</i>
                             </div>
                             <?php
                             if ($parking == 1) {
@@ -230,7 +203,7 @@ if (isset($_GET['error'])) {
                         </div>
                         <div class="room-details-section-value-other">
                             <div class="d-f-j-c-a-c">
-                                <i class="fa-solid fa-snowflake"></i>
+                                <i class="fa-solid fa-snowflake">&nbsp;</i>
                             </div>
                             <?php
                             if ($ac == 1) {
@@ -244,14 +217,14 @@ if (isset($_GET['error'])) {
                     <div class="room-details-section-btn">
                         <div class="room-reserving-btn">
                             <form action="./functions/book_room.php" method="POST">
-                                <input type="hidden" name="roomid" value="<?php echo $roomid;?>" />
-                                <input type="hidden" name="userid" value="<?php echo $myid;?>" />
+                                <input type="hidden" name="roomid" value="<?php echo $roomid;?>">
+                                <input type="hidden" name="userid" value="<?php echo $myid;?>">
                                 <label for="startdate">Érkezés dátum:</label>
-                                <input type="date" id="startdate" name="startdate" value="<?php echo date('Y-m-d'); ?>" required />
+                                <input type="date" id="startdate" name="startdate" value="<?php echo date('Y-m-d'); ?>" required>
                                 <br >
                                 <label for="enddate">Távozás dátum:</label>
-                                <input type="date" id="enddate" name="enddate" value="<?php echo date('Y-m-d'); ?>" required />
-                                <input class="sendreview" type="submit" value="Foglalás" />
+                                <input type="date" id="enddate" name="enddate" value="<?php echo date('Y-m-d'); ?>" required>
+                                <input class="sendreview" type="submit" value="Foglalás">
                             </form>
                         </div>
                     </div>
@@ -282,7 +255,7 @@ if (isset($_GET['error'])) {
                 echo "<div class='review'>";
                 echo "<div class='review-user'>";
                 echo "<div class='review-user-img'>";
-                echo '<img class="fullimg" src="./uploads/'.$profilepic.'" alt="Profil kép" class="profile-img" />';
+                echo '<img src="./uploads/'.$profilepic.'" alt="Profil kép" class="profile-img fullimg">';
                 echo "</div>";
                 echo "<div class='review-user-name'>$fullname</div>";
                 echo "</div>";
@@ -307,21 +280,23 @@ if (isset($_GET['error'])) {
                         <div class="review-form-section">
                             <label for="rating">Értékelés:</label>
                             <select name="rating" id="rating" required>
-                                <option value="5">5/5</option>
+                                <option value="" disabled selected>Válassz egy értékelést</option>
+                                <option value="5" >5/5</option>
                                 <option value="4">4/5</option>
                                 <option value="3">3/5</option>
                                 <option value="2">2/5</option>
                                 <option value="1">1/5</option>
                             </select>
+
                         </div>
                         <div class="review-form-section">
                             <label for="review">Vélemény:</label>
                             <textarea class="review-textbox" name="review" id="review" required></textarea>
                         </div>
                         <div class="review-form-section">
-                            <input type="hidden" name="roomid" value="<?php echo $roomid;?>" />
-                            <input type="hidden" name="userid" value="<?php echo $myid;?>" />
-                            <input class="sendreview" type="submit" value="Küldés" />
+                            <input type="hidden" name="roomid" value="<?php echo $roomid;?>">
+                            <input type="hidden" name="userid" value="<?php echo $myid;?>">
+                            <input class="sendreview" type="submit" value="Küldés">
                         </div>
                     </form>
                 </div>

@@ -46,11 +46,11 @@ session_start();
             ?>
           </div>
           <div class="hamburger-menu-icon" onclick="showHamburgerMenu()">
-            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-bars">&nbsp;</i>
           </div>
             <div class="hamburger-menu" id="hamburger-menu">
               <div class="hamburger-menu-close-icon" onclick="hideHamburgerMenu()">
-                <i class="fa-solid fa-times"></i>
+                <i class="fa-solid fa-times">&nbsp;</i>
               </div>
               <nav class="nav-mobile">
                 <ul>
@@ -136,13 +136,13 @@ session_start();
       <div class="footer-right">
         <div class="social-media">
           <a href="http://facebook.com/mdnhotel"
-            ><i class="fab fa-facebook-f"></i
+            ><i class="fab fa-facebook-f">&nbsp;</i
           ></a>
           <a href="http://twitter.com/mdnhotel"
-            ><i class="fab fa-twitter"></i
+            ><i class="fab fa-twitter">&nbsp;</i
           ></a>
           <a href="http://instagram.com/mdnhotel"
-            ><i class="fab fa-instagram"></i
+            ><i class="fab fa-instagram">&nbsp;</i
           ></a>
         </div>
         <div class="awards">
