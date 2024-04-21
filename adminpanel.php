@@ -1,12 +1,17 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adminpanel</title>
-    <link rel="stylesheet" href="./css/global.css" />
-    <link rel="stylesheet" href="./css/adminpanel_style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/adminpanel_style.css">
+    <link rel="stylesheet" href=
+    "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap">
     <script src="./js/global.js"></script>
 </head>
 <body>
@@ -41,7 +46,6 @@
             </nav>
             <div class="book-now">
                 <?php
-                session_start();
                 if (isset($_SESSION['id'])) {
                     echo '<a class="book-now-text" href="./reservation.php">FOGLALÁS</a>';
                     echo '<a class="my-account-text m-l-24" href="./profile.php">Profilom</a>';
@@ -53,11 +57,11 @@
                 ?>
             </div>
             <div class="hamburger-menu-icon" onclick="showHamburgerMenu()">
-                <i class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-bars">&nbsp;</i>
             </div>
             <div class="hamburger-menu" id="hamburger-menu">
                 <div class="hamburger-menu-close-icon" onclick="hideHamburgerMenu()">
-                    <i class="fa-solid fa-times"></i>
+                    <i class="fa-solid fa-times">&nbsp;</i>
                 </div>
                 <nav class="nav-mobile">
                     <ul>
@@ -65,7 +69,6 @@
                         <li><a href="./reservation.php">Szobáink</a></li>
                         <li><a href="./gallery.php">Galéria</a></li>
                         <?php
-                        session_start();
                         if (isset($_SESSION['id'])) {
                             echo '<li><a href="./profile.php">Profilom</a></li>';
                             echo '<li><a href="./reservation.php">Foglalás</a></li>';
@@ -82,6 +85,7 @@
     </div>
 </header>
 <section>
+    <h1>&nbsp;</h1>
     <?php
     if (isset($msg)) {
         echo '<div class="success-msg">' . $msg . '</div>';
@@ -94,27 +98,28 @@
     ?>
     <div class="section-title">Szobák hozzáadása</div>
     <form class="admin-panel-form" id="addRoomForm" method="post" action="./functions/add_room.php" enctype="multipart/form-data">
-        <input class="admin-panel-form-input" type="text" id="roomName" name="roomName" required placeholder="Szoba neve" />
-        <input class="admin-panel-form-input" type="number" id="capacity" min="0" max="5" name="capacity" required placeholder="Férőhely" />
-        <input class="admin-panel-form-input" type="number" id="price" name="price" required placeholder="Ár / Éjszaka" />
+        <input class="admin-panel-form-input" type="text" id="roomName" name="roomName" required placeholder="Szoba neve">
+        <input class="admin-panel-form-input" type="number" id="capacity" min="0" max="5" name="capacity" required placeholder="Férőhely">
+        <input class="admin-panel-form-input" type="number" id="price" name="price" required placeholder="Ár / Éjszaka">
             <label for="roompic">Kép a szobáról:</label>
             <input type="file" name="roompic" id="roompic">
         <div class="admin-panel-spec-input">
-            <input type="checkbox" id="freewifi" name="freewifi" value="FreeWifi" />
-            <label for="freewifi">Ingyenes internet</label><br />
+            <input type="checkbox" id="freewifi" name="freewifi" value="FreeWifi">
+            <label for="freewifi">Ingyenes internet</label><br>
         </div>
         <div class="admin-panel-spec-input">
-            <input type="checkbox" id="balcony" name="balcony" value="Balcony" />
-            <label for="balcony">Terasz</label><br />
+            <input type="checkbox" id="balcony" name="balcony" value="Balcony">
+            <label for="balcony">Terasz</label><br>
         </div>
         <div class="admin-panel-spec-input">
-            <input type="checkbox" id="airconditioning" name="airconditioning" value="AirConditioning" />
-            <label for="airconditioning">Légkonícionáló</label><br />
+            <input type="checkbox" id="airconditioning" name="airconditioning" value="AirConditioning">
+            <label for="airconditioning">Légkonícionáló</label><br>
         </div>
         <button class="input-form-btn" type="submit">Add Room</button>
     </form>
 </section>
 <section>
+    <h1>&nbsp;</h1>
     <div class="section-title">Meglévő szobák:</div>
     <div class="overflow">
         <table>
