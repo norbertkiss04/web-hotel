@@ -16,7 +16,7 @@
       header("Location: ./index.php");
     }
     if (isset($_POST["email"])) {
-        if (!isset($_POST["email"]) || trim($_POST["email"]) === "" || !isset($_POST["lastname"]) || trim($_POST["lastname"]) === "" || !isset($_POST["firstname"]) || trim($_POST["firstname"]) === "" || !isset($_POST["password"]) || trim($_POST["password"]) === "") {
+        if (trim($_POST["email"]) === "" || !isset($_POST["lastname"]) || trim($_POST["lastname"]) === "" || !isset($_POST["firstname"]) || trim($_POST["firstname"]) === "" || !isset($_POST["password"]) || trim($_POST["password"]) === "") {
             header("Location: sign_up.php?error=emptyfields");
             return;
         }

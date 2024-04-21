@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -12,8 +16,7 @@
       <link rel="stylesheet" href=
       "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-      <script src="./js/global.js">
-      </script>
+      <script src="./js/global.js"></script>
   </head>
   <body>
     <header>
@@ -32,7 +35,6 @@
           </nav>
           <div class="book-now">
             <?php
-                session_start();
                 if (isset($_SESSION['id'])) {
                     echo '<a class="book-now-text" href="./reservation.php">FOGLALÁS</a>';
                     echo '<a class="my-account-text m-l-24" href="./profile.php">Profilom</a>';
@@ -56,7 +58,6 @@
                   <li><a href="./reservation.php">Szobáink</a></li>
                   <li><a href="./gallery.php">Galéria</a></li>
                   <?php
-                    session_start();
                     if (isset($_SESSION['id'])) {
                         echo '<li><a href="./profile.php">Profilom</a></li>';
                         echo '<li><a href="./reservation.php">Foglalás</a></li>';
@@ -75,10 +76,10 @@
         <div class="hero-content">
           <div class="col1">
             <span class="tagline"> ÉLJEN ÁT EGY FELEJTHETETLEN ÉLMÉNYT</span>
-            <h1>
+            <div class="ta">
               <p>MERÜLJÖN EL</p>
               <p>A KÉNYELEMBEN</p>
-            </h1>
+            </div>
             <a href="./reservation.php" class="btn-view-rooms">Tekintsd meg szobáinkat</a>
           </div>
           <div class="col2"></div>
@@ -108,7 +109,7 @@
         </div>
       </div>
       <div class="col2">
-        <img src="./img/hero2.jpg" alt="" height="700" />
+        <img src="./img/hero2.jpg" alt="hero img" height="700">
         <div class="info">
           <div>
             <p>50</p>
