@@ -36,6 +36,9 @@
         if ($_GET['war'] == 'nametaken') {
             $war = 'Már van ilyen nevű szoba';
         }
+        if ($_GET['war'] == 'invalidimage') {
+            $war = 'Nem megfelelő képformátum!';
+        }
     }
 ?>
 <header>
@@ -121,7 +124,7 @@
             <input type="checkbox" id="airconditioning" name="airconditioning" value="AirConditioning">
             <label for="airconditioning">Légkonícionáló</label><br>
         </div>
-        <button class="input-form-btn" type="submit">Add Room</button>
+        <button class="input-form-btn" type="submit">Szoba hozzáadása</button>
     </form>
 </section>
 <section>
@@ -156,7 +159,7 @@
                     echo "<td>" . ($row['Wifi'] ? 'Igen' : 'Nincs') . "</td>";
                     echo "<td>" . ($row['Balcony'] ? 'Igen' : 'Nincs') . "</td>";
                     echo "<td>" . ($row['AirConditioning'] ? 'Igen' : 'Nincs') . "</td>";
-                    echo '<td><button class="editroom" onclick="editRoom(' . $row['Id'] . ')">Módosítás</button><button onclick="deleteRoom(' . $row['Id'] . ')">Delete</button></td>';
+                    echo '<td><button class="editroom" onclick="editRoom(' . $row['Id'] . ')">Módosítás</button><button onclick="deleteRoom(' . $row['Id'] . ')">Törlés</button></td>';
                     echo "</tr>";
                 }
             } else {
