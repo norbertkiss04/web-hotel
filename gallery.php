@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,10 +10,8 @@
     <title>Galéria</title>
     <link rel="stylesheet" href="./css/global.css">
     <link rel="stylesheet" href="./css/gallery_style.css">
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href=
+    "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap">
     <script
     src="https://kit.fontawesome.com/e8a7f12e99.js"
     crossorigin="anonymous"
@@ -33,7 +35,6 @@
           </nav>
           <div class="book-now">
           <?php
-                session_start();
                 if (isset($_SESSION['id'])) {
                     echo '<a class="book-now-text" href="./reservation.php">FOGLALÁS</a>';
                     echo '<a class="my-account-text m-l-24" href="./profile.php">Profilom</a>';
@@ -45,11 +46,11 @@
             ?>
           </div>
           <div class="hamburger-menu-icon" onclick="showHamburgerMenu()">
-            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-bars">&nbsp;</i>
           </div>
             <div class="hamburger-menu" id="hamburger-menu">
               <div class="hamburger-menu-close-icon" onclick="hideHamburgerMenu()">
-                <i class="fa-solid fa-times"></i>
+                <i class="fa-solid fa-times">&nbsp;</i>
               </div>
               <nav class="nav-mobile">
                 <ul>
@@ -57,7 +58,6 @@
                   <li><a href="./reservation.php">Szobáink</a></li>
                   <li><a href="./gallery.php">Galéria</a></li>
                   <?php
-                    session_start();
                     if (isset($_SESSION['id'])) {
                         echo '<li><a href="./profile.php">Profilom</a></li>';
                         echo '<li><a href="./reservation.php">Foglalás</a></li>';
@@ -74,6 +74,7 @@
       </div>
     </header>
     <section>
+        <h2>&nbsp;</h2>
         <div class="gallery-container">
             <div class="gallery">
                 <img class="img" id="main-img" src="./img/hotel-room.jpg" alt="Main Image">
@@ -110,13 +111,13 @@
         <div class="footer-right">
           <div class="social-media">
             <a href="http://facebook.com/mdnhotel"
-              ><i class="fab fa-facebook-f"></i
+              ><i class="fab fa-facebook-f">&nbsp;</i
             ></a>
             <a href="http://twitter.com/mdnhotel"
-              ><i class="fab fa-twitter"></i
+              ><i class="fab fa-twitter">&nbsp;</i
             ></a>
             <a href="http://instagram.com/mdnhotel"
-              ><i class="fab fa-instagram"></i
+              ><i class="fab fa-instagram">&nbsp;</i
             ></a>
           </div>
           <div class="awards">
