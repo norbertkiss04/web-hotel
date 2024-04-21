@@ -33,12 +33,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/adminpanel_style.css" />
-    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="stylesheet" href="./css/adminpanel_style.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href=
+    "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap">
     <title>Szoba módosítása</title>
 </head>
 <body>
 <section>
+    <h1>&nbsp;</h1>
     <?php
     if (isset($_GET['error'])) {
         if ($_GET['error'] == 'emptyfields') {
@@ -56,29 +59,29 @@
     ?>
     <div class="section-title">Szoba módosítása</div>
     <form class="admin-panel-form" id="editRoomForm" method="post" action="./functions/edit_room.php" enctype="multipart/form-data">
-        <input type="hidden" name="roomId" value="<?php echo $roomid ?>" />
+        <input type="hidden" name="roomId" value="<?php echo $roomid ?>">
         <label class="admin-panel-from-subtitle">Neve: </label>
-        <input class="admin-panel-form-input" type="text" id="roomName" value="<?php echo $roomname ?>" name="roomName" required placeholder="Szoba neve" />
+        <input class="admin-panel-form-input" type="text" id="roomName" value="<?php echo $roomname ?>" name="roomName" required placeholder="Szoba neve">
         <label class="admin-panel-from-subtitle">Férőhelyek száma: </label>
-        <input class="admin-panel-form-input" type="number" id="capacity" value="<?php echo $capacity ?>" min="0" max="5" name="capacity" required placeholder="Férőhely" />
+        <input class="admin-panel-form-input" type="number" id="capacity" value="<?php echo $capacity ?>" min="0" max="5" name="capacity" required placeholder="Férőhely">
         <label class="admin-panel-from-subtitle">Ára: </label>
-        <input class="admin-panel-form-input" type="number" id="price" value="<?php echo $price ?>" name="price" required placeholder="Ár / Éjszaka" />
+        <input class="admin-panel-form-input" type="number" id="price" value="<?php echo $price ?>" name="price" required placeholder="Ár / Éjszaka">
             <label class="admin-panel-from-subtitle" for="roompic">Kép a szobáról: </label>
             <?php  
-                echo '<img src="./uploads/'.$image.'" alt="Profil kép" class="profile-img" />';
+                echo '<img src="./uploads/'.$image.'" alt="Profil kép" class="profile-img">';
             ?>
-            <input type="file" name="roompic" id="roompic" value="<?php echo $image ?>">
+            <input type="file" name="roompic" id="roompic">
         <div class="admin-panel-spec-input">
-            <input type="checkbox" id="freewifi" name="freewifi" />
-            <label for="freewifi">Ingyenes internet</label><br />
+            <input type="checkbox" id="freewifi" name="freewifi">
+            <label for="freewifi">Ingyenes internet</label><br>
         </div>
         <div class="admin-panel-spec-input">
-            <input type="checkbox" id="balcony" name="balcony"  />
-            <label for="balcony">Terasz</label><br />
+            <input type="checkbox" id="balcony" name="balcony" >
+            <label for="balcony">Terasz</label><br>
         </div>
         <div class="admin-panel-spec-input">
-            <input type="checkbox" id="airconditioning" name="airconditioning" />
-            <label for="airconditioning">Légkonícionáló</label><br />
+            <input type="checkbox" id="airconditioning" name="airconditioning">
+            <label for="airconditioning">Légkonícionáló</label><br>
         </div>
         <button class="input-form-btn" type="submit">Szoba módosítása</button>
     </form>
