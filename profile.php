@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./css/global.css" />
-    <link rel="stylesheet" href="./css/profile_style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="stylesheet" href="./css/profile_style.css">
     <script
       src="https://kit.fontawesome.com/e8a7f12e99.js"
       crossorigin="anonymous"
     ></script>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
+      <link rel="stylesheet" href=
+      "https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap">
     <script src="./js/global.js"></script>
     <title>Profilom</title>
   </head>
@@ -55,64 +53,64 @@
 ?>
   <body>
     <header>
-      <div class="nav-container">
-        <div class="logo">
-          <p class="x">MDN</p>
-          <p>Hotel</p>
-        </div>
-      <div class="nav-bar">
-        <nav class="nav">
-          <ul>
-            <li><a href="./index.php">Főoldal</a></li>
-            <li><a href="./reservation.php">Szobáink</a></li>
-            <li><a href="./gallery.php">Galéria</a></li>
-          </ul>
-        </nav>
-        <div class="book-now">
-        <?php
-            if (isset($_SESSION['id'])) {
-                echo '<a class="book-now-text" href="./reservation.php">FOGLALÁS</a>';
-                echo '<a class="my-account-text m-l-24" href="./profile.php">Profilom</a>';
-                if ($_SESSION['IsAdmin'] == 1) {
-                  echo '<a class="my-account-text" href="./adminpanel.php">AdminPanel</a>';
-              }
-                echo '<a class="my-account-text" href="./functions/sign_out.php">Kijelentkezés</a>';
-            } else {
-                echo '<a class="my-account-text" href="./sign_in.php">Bejelentkezés</a>';
-                echo '<a class="book-now-text" href="./sign_up.php">Regisztráció</a>';
-            }
-        ?>
-        </div>
-        <div class="hamburger-menu-icon" onclick="showHamburgerMenu()">
-          <i class="fa-solid fa-bars"></i>
-        </div>
-          <div class="hamburger-menu" id="hamburger-menu">
-            <div class="hamburger-menu-close-icon" onclick="hideHamburgerMenu()">
-              <i class="fa-solid fa-times"></i>
+        <div class="nav-container">
+            <div class="logo">
+                <p class="x">MDN</p>
+                <p>Hotel</p>
             </div>
-            <nav class="nav-mobile">
-              <ul>
-                <li><a href="./index.php">Főoldal</a></li>
-                <li><a href="./reservation.php">Szobáink</a></li>
-                <li><a href="./gallery.php">Galéria</a></li>
-                <?php
+            <div class="nav-bar">
+                <nav class="nav">
+                    <ul>
+                        <li><a href="./index.php">Főoldal</a></li>
+                        <li><a href="./reservation.php">Szobáink</a></li>
+                        <li><a href="./gallery.php">Galéria</a></li>
+                    </ul>
+                </nav>
+                <div class="book-now">
+                    <?php
                     if (isset($_SESSION['id'])) {
-                        echo '<a class="my-account-text" href="./profile.php">Profilom</a>';
                         echo '<a class="book-now-text" href="./reservation.php">FOGLALÁS</a>';
+                        echo '<a class="my-account-text m-l-24" href="./profile.php">Profilom</a>';
                         if ($_SESSION['IsAdmin'] == 1) {
-                            echo '<a class="my-account-text" href="./adminpanel.php">Admin</a>';
+                            echo '<a class="my-account-text" href="./adminpanel.php">AdminPanel</a>';
                         }
-                        echo '<a class="my-account-text m-l-24" href="./functions/sign_out.php">Kijelentkezés</a>';
+                        echo '<a class="my-account-text" href="./functions/sign_out.php">Kijelentkezés</a>';
                     } else {
-                        echo '<li><a href="./sign_in.php">Bejelentkezés</a></li>';
-                        echo '<li><a href="./sign_up.php">Regisztráció</a></li>';
+                        echo '<a class="my-account-text" href="./sign_in.php">Bejelentkezés</a></li>';
+                        echo '<a class="book-now-text" href="./sign_up.php">Regisztráció</a>';
                     }
-                ?>
-              </ul>
-            </nav>
-          </div>
-      </div>
-    </div>
+                    ?>
+                </div>
+                <div class="hamburger-menu-icon" onclick="showHamburgerMenu()">
+                    <i class="fa-solid fa-bars" aria-hidden="true">&nbsp;</i>
+                </div>
+                <div class="hamburger-menu" id="hamburger-menu">
+                    <div class="hamburger-menu-close-icon" onclick="hideHamburgerMenu()">
+                        <i class="fa-solid fa-times" aria-hidden="true">&nbsp;</i>
+                    </div>
+                    <nav class="nav-mobile">
+                        <ul>
+                            <li><a href="./index.php">Főoldal</a></li>
+                            <li><a href="./reservation.php">Szobáink</a></li>
+                            <li><a href="./gallery.php">Galéria</a></li>
+                            <?php
+                            if (isset($_SESSION['id'])) {
+                                echo '<li><a class="book-now-text" href="./reservation.php">FOGLALÁS</a></li>';
+                                echo '<li><a class="my-account-text m-l-24" href="./profile.php">Profilom</a></li>';
+                                if ($_SESSION['IsAdmin'] == 1) {
+                                    echo '<li><a class="my-account-text" href="./adminpanel.php">AdminPanel</a></li>';
+                                }
+                                echo '<li><a class="my-account-text" href="./functions/sign_out.php">Kijelentkezés</a></li>';
+                            } else {
+                                echo '<li><a class="my-account-text" href="./sign_in.php">Bejelentkezés</a></li>';
+                                echo '<li><a class="book-now-text" href="./sign_up.php">Regisztráció</a></li>';
+                            }
+                            ?>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
     </header>
     <section class="up">
       <h1 class="section-title">Személyes adatok</h1>
@@ -121,7 +119,7 @@
             <div class="profile-img-container">
                 <?php
 
-                echo '<img src="./uploads/'.$profilepic.'" alt="Profil kép" class="profile-img" />';
+                echo '<img src="./uploads/'.$profilepic.'" alt="Profil kép" class="profile-img">';
                 ?>
             </div>
             <div class="profile-details">
@@ -171,8 +169,8 @@
     </section>
 
     <section>
-      <h1 class="section-title">Foglalások listája</h1>
-      <?php
+        <h1 class="section-title">Foglalások listája</h1>
+        <?php
         if (empty($bookings)) {
             echo '<div class="no-bookings">Nincs foglalás</div>';
         } else {
@@ -182,83 +180,62 @@
                 echo '<div class="room-content">';
                 echo '<div class="w-48p-l">';
                 echo '<div class="large-img">';
-                echo '<img class="img" src="img/hotel-room.jpg" />';
+                echo '<img class="img" alt="kep" src="img/hotel-room.jpg">';
                 echo '</div>';
                 echo '</div>';
                 echo '<div class="w-48p-r">';
                 echo '<div class="room-details">';
-                echo '<div class="room-details-section">';
-                echo '<div class="room-details-section-title">Foglalás periódusa:</div>';
-                echo '<div class="room-details-section-value">'.formatDate($booking["StartDate"]). ' - ' .formatDate($booking["EndDate"]).'</div>';
-                echo '</div>';
-                // echo '<div class="room-details-section">';
-                // echo '<div class="room-details-section-title">Szoba száma:</div>';
-                // echo '<div class="room-details-section-value">'.$booking["RoomNumber"].'</div>';
-                // echo '</div>';
-                echo '<div class="room-details-section">';
-                echo '<div class="room-details-section-title">Ár:</div>';
-                echo '<div class="room-details-section-value">'.formatPrice($booking["Price"]).' HUF / Éjszaka</div>';
-                echo '</div>';
-                echo '<div class="room-details-section">';
-                echo '<div class="room-details-section-title">Férőhelyek száma:</div>';
-                echo '<div class="room-details-section-value">'.$booking["Capacity"].'</div>';
-                echo '</div>';
-                echo '<div class="room-details-section">';
-                echo '<div class="room-details-section-title">Egyéb</div>';
-                echo '<div class="room-details-section-value-other">';
-                echo '<div class="d-f-j-c-a-c">';
-                echo '<i class="fa-solid fa-wifi"></i>';
-                echo '</div>';
-                if ($booking["Wifi"] == 1) {
-                    echo 'Ingyenes WIFI';
-                } else {
-                    echo 'Fizetős WIFI';
+                foreach ([
+                             "Foglalás periódusa" => formatDate($booking["StartDate"]) . ' - ' . formatDate($booking["EndDate"]),
+                             "Ár" => formatPrice($booking["Price"]) . ' HUF / Éjszaka',
+                             "Férőhelyek száma" => $booking["Capacity"],
+                         ] as $title => $value) {
+                    echo '<div class="room-details-section">';
+                    echo '<div class="room-details-section-title">' . $title . ':</div>';
+                    echo '<div class="room-details-section-value">' . $value . '</div>';
+                    echo '</div>';
                 }
-                echo '</div>';
-
-                echo '<div class="room-details-section-value-other">';
-                echo '<div class="d-f-j-c-a-c">';
-                echo '<i class="fas fa-door-open"></i>';
-                echo '</div>';
-                if ($booking["Balcony"] == 1) {
-                    echo 'Erkélyes szoba';
-                } else {
-                    echo 'Nincs erkély';
+                $features = [
+                    "Wifi" => ["icon" => "fa-solid fa-wifi", "texts" => ["Ingyenes WIFI", "Fizetős WIFI"]],
+                    "Balcony" => ["icon" => "fas fa-door-open", "texts" => ["Erkélyes szoba", "Nincs erkély"]],
+                    "AirConditioning" => ["icon" => "fa-solid fa-snowflake", "texts" => ["Ingyenes légkodícionáló", "Fizetős légkodícionáló"]],
+                ];
+                foreach ($features as $key => $feature) {
+                    echo '<div class="room-details-section">';
+                    echo '<div class="room-details-section-title">Egyéb</div>';
+                    echo '<div class="room-details-section-value-other">';
+                    echo '<div class="d-f-j-c-a-c">';
+                    echo '<i class="' . $feature["icon"] . '">&nbsp;</i>';
+                    echo '</div>';
+                    echo $booking[$key] == 1 ? $feature["texts"][0] : $feature["texts"][1];
+                    echo '</div>';
+                    echo '</div>';
                 }
-                echo '</div>';
-                echo '<div class="room-details-section-value-other">';
-                echo '<div class="d-f-j-c-a-c">';
-                echo '<i class="fa-solid fa-snowflake"></i>';
-                echo '</div>';
-                if ($booking["AirConditioning"] == 1) {
-                    echo 'Ingyenes légkodícionáló';
-                } else {
-                    echo 'Fizetős légkodícionáló';
-                }
-                echo '</div>';
-                echo '</div>';
                 echo '<div class="room-details-section-btn">';
                 echo '<form action="./functions/cancelreservation.php" method="POST">';
-                echo '<input type="hidden" name="roomid" value="'.$booking["Id"].'">';
+                echo '<input type="hidden" name="roomid" value="' . $booking["Id"] . '">';
                 echo '<input type="submit" class="room-reserving-btn" value="Lemondás">';
                 echo '</form>';
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
+                echo '</div>';
             }
+            echo '</div>';
         }
-      ?>
+        ?>
     </section>
+
+
     <script>
       function showUpdateForm() {
-    document.getElementById('updateForm').style.display = 'block';
-}
+        document.getElementById('updateForm').style.display = 'block';
+    }
 
-function hideUpdateForm() {
-    document.getElementById('updateForm').style.display = 'none';
-}
-
+    function hideUpdateForm() {
+        document.getElementById('updateForm').style.display = 'none';
+    }
     </script>
   </body>
 </html>

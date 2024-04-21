@@ -1,5 +1,5 @@
 section {
-    margin: 64px 0px;
+    margin: 64px 0;
     padding: 24px 64px;
     width: 100%;
     box-sizing: border-box;
@@ -29,7 +29,6 @@ section {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 24px;
-    display: flex;
     flex-wrap: wrap;
     width: 300px;
     gap: 64px;
@@ -191,7 +190,7 @@ section {
 .room-details-section {
 	display: flex;
 	flex-direction: column;
-	margin: 16px 0px;
+	margin: 16px 0;
 }
 
 .room-details-section-title {
@@ -260,11 +259,11 @@ section {
 
 	.w-48p-r {
 		width: 100%;
-		border-radius: 0px 0px 8px 8px;
+		border-radius: 0 0 8px 8px;
 	}
 	.w-48p-l {
 		width: 100%;
-		border-radius: 8px 8px 0px 0px;
+		border-radius: 8px 8px 0 0;
 	}
 
 	.room-container {
